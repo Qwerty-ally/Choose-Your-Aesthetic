@@ -1,0 +1,3917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Aesthetic ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ffecd2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(255,107,157,0.3);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Gender Toggle */
+        .gender-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 15px 0;
+        }
+
+        .gender-btn {
+            padding: 12px 20px;
+            border: none;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.5);
+            color: #666;
+        }
+
+        .gender-btn:first-child {
+            border-radius: 25px 0 0 25px;
+        }
+
+        .gender-btn:nth-child(2) {
+            border-radius: 0;
+        }
+
+        .gender-btn:last-child {
+            border-radius: 0 25px 25px 0;
+        }
+
+        .gender-btn.active {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255,107,157,0.4);
+        }
+
+        .gender-btn.active.male {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+        }
+
+        .gender-btn.active.nonbinary {
+            background: linear-gradient(135deg, #f9d423 0%, #e65c00 50%, #9b59b6 100%);
+            box-shadow: 0 4px 15px rgba(249,212,35,0.4);
+        }
+
+        .vibe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .vibe-btn {
+            padding: 15px 8px;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vibe-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .vibe-btn:active {
+            transform: scale(0.98);
+        }
+
+        .vibe-emoji {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        /* Aesthetic Button Styles */
+        .vibe-btn.cozy { background: linear-gradient(135deg, #a18072 0%, #d4a574 100%); color: #fff; }
+        .vibe-btn.preppy { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); color: #fff; }
+        .vibe-btn.indie { background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%); color: #5a5a5a; }
+        .vibe-btn.y2k { background: linear-gradient(135deg, #ff00ff 0%, #00ffff 50%, #ff00ff 100%); color: #fff; text-shadow: 1px 1px 0 #000; }
+        .vibe-btn.gamer { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+        .vibe-btn.darkacademia { background: linear-gradient(135deg, #3d2914 0%, #5c4033 100%); color: #f5e6d3; }
+        .vibe-btn.cottagecore { background: linear-gradient(135deg, #c9e4ca 0%, #87a96b 100%); color: #2d4a2d; }
+        .vibe-btn.softgirl { background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ffe4e1 100%); color: #d63384; }
+        .vibe-btn.grunge { background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%); color: #c41e3a; }
+        .vibe-btn.coastal { background: linear-gradient(135deg, #87ceeb 0%, #e0f7fa 50%, #b2dfdb 100%); color: #1a5f7a; }
+        .vibe-btn.coquette { background: linear-gradient(135deg, #fff0f5 0%, #ffb6c1 50%, #ffc0cb 100%); color: #c71585; }
+        .vibe-btn.fairycore { background: linear-gradient(135deg, #e6e6fa 0%, #dda0dd 50%, #98fb98 100%); color: #663399; }
+        .vibe-btn.emo { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%); color: #ff1744; }
+        .vibe-btn.cleangirl { background: linear-gradient(135deg, #f5f5dc 0%, #e8e4d9 50%, #d4c5a9 100%); color: #5d4e37; }
+        .vibe-btn.oldmoney { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); color: #d4af37; }
+        .vibe-btn.balletcore { background: linear-gradient(135deg, #fdf2f8 0%, #f5d0e0 50%, #f8bbd9 100%); color: #9d174d; }
+        .vibe-btn.cyberpunk { background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #2d0a4e 100%); color: #00ff9f; text-shadow: 0 0 10px #00ff9f; }
+        .vibe-btn.witchy { background: linear-gradient(135deg, #1a1a2e 0%, #4a1942 100%); color: #9b59b6; }
+        .vibe-btn.angelcore { background: linear-gradient(135deg, #fff 0%, #f0f8ff 50%, #e6e6fa 100%); color: #b8860b; }
+        .vibe-btn.mermaidcore { background: linear-gradient(135deg, #00d4ff 0%, #7b68ee 50%, #ff69b4 100%); color: #fff; }
+        .vibe-btn.barbiecore { background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%); color: #fff; }
+        .vibe-btn.mobwife { background: linear-gradient(135deg, #8b0000 0%, #2c1810 100%); color: #d4af37; }
+        .vibe-btn.tomatogirl { background: linear-gradient(135deg, #ff6347 0%, #ff4500 100%); color: #fff; }
+        .vibe-btn.vanillagirl { background: linear-gradient(135deg, #fff8dc 0%, #f5deb3 100%); color: #8b7355; }
+        .vibe-btn.coconutgirl { background: linear-gradient(135deg, #87ceeb 0%, #f0e68c 100%); color: #2e8b57; }
+        .vibe-btn.royalcore { background: linear-gradient(135deg, #4b0082 0%, #800020 100%); color: #ffd700; }
+        .vibe-btn.skatergirl { background: linear-gradient(135deg, #f5f5dc 0%, #deb887 100%); color: #2f4f4f; }
+        .vibe-btn.thatgirl { background: linear-gradient(135deg, #98fb98 0%, #f0fff0 100%); color: #2e8b57; }
+        .vibe-btn.downtowngirl { background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); color: #fff; }
+        .vibe-btn.ecogirl { background: linear-gradient(135deg, #228b22 0%, #90ee90 100%); color: #fff; }
+        .vibe-btn.artsy { background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%); color: #fff; }
+        .vibe-btn.minimalist { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #212529; }
+        .vibe-btn.streetwear { background: linear-gradient(135deg, #212529 0%, #495057 100%); color: #fff; }
+        .vibe-btn.skater { background: linear-gradient(135deg, #8b4513 0%, #d2691e 100%); color: #fff; }
+        .vibe-btn.eboy { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #e94560; }
+        .vibe-btn.softboy { background: linear-gradient(135deg, #b8c5d6 0%, #d4e5f7 100%); color: #5d7a99; }
+        .vibe-btn.surfer { background: linear-gradient(135deg, #00bfff 0%, #f0e68c 100%); color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .vibe-btn.rugged { background: linear-gradient(135deg, #5d4037 0%, #8d6e63 100%); color: #fff; }
+        .vibe-btn.techwear { background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); color: #00ff00; }
+        .vibe-btn.vintage { background: linear-gradient(135deg, #deb887 0%, #d2691e 100%); color: #fff; }
+        .vibe-btn.normcore { background: linear-gradient(135deg, #a9a9a9 0%, #d3d3d3 100%); color: #333; }
+        .vibe-btn.grandpacore { background: linear-gradient(135deg, #8b7355 0%, #a0522d 100%); color: #fff; }
+        .vibe-btn.lighacademia { background: linear-gradient(135deg, #f5e6d3 0%, #d4b896 100%); color: #5c4033; }
+        .vibe-btn.gothcore { background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%); color: #8b0000; }
+        .vibe-btn.preppyboy { background: linear-gradient(135deg, #1e3a5f 0%, #2e5a88 100%); color: #fff; }
+        .vibe-btn.athletic { background: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%); color: #fff; }
+        .vibe-btn.monochrome { background: linear-gradient(135deg, #000 0%, #fff 100%); color: #666; }
+        .vibe-btn.boho { background: linear-gradient(135deg, #cd853f 0%, #daa520 100%); color: #fff; }
+        .vibe-btn.blokette { background: linear-gradient(135deg, #ff69b4 0%, #1e90ff 100%); color: #fff; }
+        .vibe-btn.corpcore { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: #fff; }
+        .vibe-btn.regencycore { background: linear-gradient(135deg, #f8f4e3 0%, #c9b896 100%); color: #5d4e37; }
+        .vibe-btn.westerncore { background: linear-gradient(135deg, #8b4513 0%, #cd853f 100%); color: #fff; }
+        .vibe-btn.kidcore { background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #6bcb77 100%); color: #fff; }
+        .vibe-btn.spacecore { background: linear-gradient(135deg, #0c0c1e 0%, #1a1a3e 50%, #2d1b4e 100%); color: #e0e0ff; }
+
+        /* Results Section */
+        .results {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .result-emojis {
+            font-size: 1.3rem;
+            letter-spacing: 5px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-content {
+            background: #f8f8f8;
+            padding: 12px 16px;
+            border-radius: 15px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .section-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-content li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .section-content li:last-child {
+            border-bottom: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #00f2ea 0%, #ff0050 100%);
+            color: #fff;
+        }
+
+        .back-btn {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .shop-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .shop-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .shop-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .shop-link.spotify { background: #1DB954; color: #fff; }
+        .shop-link.amazon { background: #FF9900; color: #000; }
+        .shop-link.etsy { background: #F56400; color: #fff; }
+        .shop-link.pinterest { background: #E60023; color: #fff; }
+        .shop-link.walmart { background: #0071dc; color: #fff; }
+        .shop-link.apple { background: linear-gradient(135deg, #fa233b 0%, #fb5c74 100%); color: #fff; }
+        .shop-link.youtube { background: #ff0000; color: #fff; }
+        .shop-link.depop { background: #ff2300; color: #fff; }
+
+        .sparkle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1) rotate(180deg); opacity: 0; }
+        }
+
+        /* Theme variations */
+        body.cozy-theme { background: linear-gradient(135deg, #d4a574 0%, #a18072 50%, #c4956a 100%); }
+        body.preppy-theme { background: linear-gradient(135deg, #fad0c4 0%, #ff9a9e 50%, #fecfef 100%); }
+        body.indie-theme { background: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 50%, #dcedc1 100%); }
+        body.y2k-theme { background: linear-gradient(135deg, #ff00ff 0%, #00ffff 50%, #ff6eff 100%); }
+        body.gamer-theme { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+        body.darkacademia-theme { background: linear-gradient(135deg, #3d2914 0%, #5c4033 50%, #8b7355 100%); }
+        body.cottagecore-theme { background: linear-gradient(135deg, #c9e4ca 0%, #87a96b 50%, #98d8aa 100%); }
+        body.softgirl-theme { background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, #ffe4e1 100%); }
+        body.grunge-theme { background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 50%, #3d3d3d 100%); }
+        body.coastal-theme { background: linear-gradient(135deg, #87ceeb 0%, #e0f7fa 50%, #b2dfdb 100%); }
+        body.coquette-theme { background: linear-gradient(135deg, #fff0f5 0%, #ffb6c1 50%, #ffc0cb 100%); }
+        body.fairycore-theme { background: linear-gradient(135deg, #e6e6fa 0%, #dda0dd 50%, #98fb98 100%); }
+        body.emo-theme { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%); }
+        body.cleangirl-theme { background: linear-gradient(135deg, #f5f5dc 0%, #e8e4d9 50%, #d4c5a9 100%); }
+        body.oldmoney-theme { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%); }
+        body.balletcore-theme { background: linear-gradient(135deg, #fdf2f8 0%, #f5d0e0 50%, #f8bbd9 100%); }
+        body.cyberpunk-theme { background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #2d0a4e 100%); }
+        body.witchy-theme { background: linear-gradient(135deg, #1a1a2e 0%, #4a1942 50%, #2d1b4e 100%); }
+        body.angelcore-theme { background: linear-gradient(135deg, #fff 0%, #f0f8ff 50%, #e6e6fa 100%); }
+        body.mermaidcore-theme { background: linear-gradient(135deg, #00d4ff 0%, #7b68ee 50%, #ff69b4 100%); }
+        body.barbiecore-theme { background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffb6c1 100%); }
+        body.mobwife-theme { background: linear-gradient(135deg, #8b0000 0%, #2c1810 50%, #1a0a0a 100%); }
+        body.tomatogirl-theme { background: linear-gradient(135deg, #ff6347 0%, #ff4500 50%, #ffa07a 100%); }
+        body.vanillagirl-theme { background: linear-gradient(135deg, #fff8dc 0%, #f5deb3 50%, #ffe4c4 100%); }
+        body.coconutgirl-theme { background: linear-gradient(135deg, #87ceeb 0%, #f0e68c 50%, #98fb98 100%); }
+        body.royalcore-theme { background: linear-gradient(135deg, #4b0082 0%, #800020 50%, #2e0854 100%); }
+        body.skatergirl-theme { background: linear-gradient(135deg, #f5f5dc 0%, #deb887 50%, #d2b48c 100%); }
+        body.thatgirl-theme { background: linear-gradient(135deg, #98fb98 0%, #f0fff0 50%, #e0ffe0 100%); }
+        body.downtowngirl-theme { background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0d0d0d 100%); }
+        body.ecogirl-theme { background: linear-gradient(135deg, #228b22 0%, #90ee90 50%, #98fb98 100%); }
+        body.artsy-theme { background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%); }
+        body.minimalist-theme { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%); }
+        body.streetwear-theme { background: linear-gradient(135deg, #212529 0%, #495057 50%, #343a40 100%); }
+        body.skater-theme { background: linear-gradient(135deg, #8b4513 0%, #d2691e 50%, #cd853f 100%); }
+        body.eboy-theme { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+        body.softboy-theme { background: linear-gradient(135deg, #b8c5d6 0%, #d4e5f7 50%, #e8f4fd 100%); }
+        body.surfer-theme { background: linear-gradient(135deg, #00bfff 0%, #87ceeb 50%, #f0e68c 100%); }
+        body.rugged-theme { background: linear-gradient(135deg, #5d4037 0%, #8d6e63 50%, #a1887f 100%); }
+        body.techwear-theme { background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #2d2d2d 100%); }
+        body.vintage-theme { background: linear-gradient(135deg, #deb887 0%, #d2691e 50%, #cd853f 100%); }
+        body.normcore-theme { background: linear-gradient(135deg, #a9a9a9 0%, #d3d3d3 50%, #dcdcdc 100%); }
+        body.grandpacore-theme { background: linear-gradient(135deg, #8b7355 0%, #a0522d 50%, #cd853f 100%); }
+        body.lighacademia-theme { background: linear-gradient(135deg, #f5e6d3 0%, #d4b896 50%, #c4a574 100%); }
+        body.gothcore-theme { background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0a0a0a 100%); }
+        body.preppyboy-theme { background: linear-gradient(135deg, #1e3a5f 0%, #2e5a88 50%, #4a7ab0 100%); }
+        body.athletic-theme { background: linear-gradient(135deg, #1a1a2e 0%, #e94560 50%, #ff6b6b 100%); }
+        body.monochrome-theme { background: linear-gradient(135deg, #333 0%, #666 50%, #999 100%); }
+        body.boho-theme { background: linear-gradient(135deg, #cd853f 0%, #daa520 50%, #f4a460 100%); }
+        body.blokette-theme { background: linear-gradient(135deg, #ff69b4 0%, #9370db 50%, #1e90ff 100%); }
+        body.corpcore-theme { background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%); }
+        body.regencycore-theme { background: linear-gradient(135deg, #f8f4e3 0%, #c9b896 50%, #d4c5a9 100%); }
+        body.westerncore-theme { background: linear-gradient(135deg, #8b4513 0%, #cd853f 50%, #daa520 100%); }
+        body.kidcore-theme { background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #6bcb77 100%); }
+        body.spacecore-theme { background: linear-gradient(135deg, #0c0c1e 0%, #1a1a3e 50%, #2d1b4e 100%); }
+
+        .copied-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #333;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .copied-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        body.grunge-theme footer,
+        body.emo-theme footer,
+        body.cyberpunk-theme footer,
+        body.darkacademia-theme footer,
+        body.witchy-theme footer,
+        body.gothcore-theme footer,
+        body.streetwear-theme footer,
+        body.techwear-theme footer,
+        body.downtowngirl-theme footer,
+        body.eboy-theme footer,
+        body.spacecore-theme footer {
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 500px) {
+            .vibe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Fun Features Styles */
+        .surprise-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(240,147,251,0.4);
+        }
+
+        .vibe-reading {
+            background: linear-gradient(135deg, rgba(147,112,219,0.1) 0%, rgba(255,182,193,0.1) 100%);
+            border-left: 4px solid #9370db;
+            padding: 15px;
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .vibe-reading-title {
+            font-weight: 700;
+            color: #9370db;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .anthem-card {
+            background: linear-gradient(135deg, #1DB954 0%, #191414 100%);
+            color: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        .anthem-title {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .anthem-song {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .anthem-artist {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .activity-tag {
+            background: rgba(255,255,255,0.8);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-align: center;
+            border: 1px dashed #ddd;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+        }
+
+        .zodiac-matches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .zodiac-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .compatible-aesthetics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .compat-tag {
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .compat-tag:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .emoji-pack-clickable {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .emoji-pack-clickable:hover {
+            transform: scale(1.05);
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .section-fun {
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .secret-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0,0,0,0.9);
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 2000;
+            transition: transform 0.3s ease;
+        }
+
+        .secret-message.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .secret-message h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .lucky-item {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        /* Quiz Styles */
+        .quiz-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
+        }
+
+        .quiz-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .quiz-progress {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .progress-dot {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: #e0e0e0;
+            transition: background 0.3s;
+        }
+
+        .progress-dot.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .progress-dot.completed {
+            background: #4CAF50;
+        }
+
+        .quiz-question-number {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: #f8f8ff;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%);
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .quiz-result-emoji {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .quiz-result-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .quiz-result-desc {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .quiz-back-btn {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* More Fun Feature Styles */
+        .celeb-inspo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .celeb-tag {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .aesthetic-enemy {
+            background: linear-gradient(135deg, rgba(255,0,0,0.1) 0%, rgba(255,100,100,0.1) 100%);
+            border-left: 4px solid #ff6b6b;
+            padding: 12px 15px;
+            border-radius: 0 15px 15px 0;
+            margin-top: 10px;
+        }
+
+        .enemy-label {
+            font-size: 0.8rem;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .enemy-link {
+            color: #ff6b6b;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            transition: all 0.2s ease;
+        }
+
+        .enemy-link:hover {
+            color: #ff4757;
+            text-decoration-style: solid;
+        }
+
+        .drink-pairing {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 12px;
+            background: rgba(139,69,19,0.1);
+            border-radius: 15px;
+        }
+
+        .drink-emoji {
+            font-size: 2rem;
+        }
+
+        .drink-info {
+            flex: 1;
+        }
+
+        .drink-name {
+            font-weight: 700;
+        }
+
+        .drink-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .affirmation-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .affirmation-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #5d4e37;
+        }
+
+        .pickup-line {
+            background: linear-gradient(135deg, rgba(255,105,180,0.1) 0%, rgba(255,182,193,0.1) 100%);
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .pickup-label {
+            font-size: 0.8rem;
+            color: #c44569;
+            margin-bottom: 5px;
+        }
+
+        .pickup-text {
+            font-style: italic;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Choose Your Aesthetic</h1>
+            <p class="subtitle">tap your vibe & get your whole era served</p>
+            <div class="gender-toggle">
+                <button class="gender-btn active" onclick="setGender('female')">her edition</button>
+                <button class="gender-btn" onclick="setGender('nonbinary')">their edition</button>
+                <button class="gender-btn" onclick="setGender('male')">his edition</button>
+            </div>
+        </header>
+
+        <main id="vibeSelection">
+            <button class="quiz-btn" onclick="startQuiz()">
+                🔮 Take the Quiz - Find Your Aesthetic!
+            </button>
+            <button class="surprise-btn" onclick="surpriseMe()">
+                ✨ Surprise Me! ✨
+            </button>
+            <div class="vibe-grid" id="vibeGrid">
+                <!-- Buttons will be populated by JavaScript -->
+            </div>
+        </main>
+
+        <!-- Quiz Section -->
+        <div id="quizContainer" class="quiz-container">
+            <div class="quiz-card">
+                <div class="quiz-progress" id="quizProgress"></div>
+                <div class="quiz-question-number" id="quizQuestionNum"></div>
+                <div class="quiz-question" id="quizQuestion"></div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <button class="quiz-back-btn" onclick="exitQuiz()">← Back to Aesthetics</button>
+            </div>
+        </div>
+
+        <div id="results" class="results">
+            <div class="result-card">
+                <div class="result-header">
+                    <div id="resultEmojis" class="result-emojis"></div>
+                    <h2 id="resultTitle" class="result-title"></h2>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">👔 Outfit Inspo</div>
+                    <div class="section-content">
+                        <ul id="outfitList"></ul>
+                        <div class="shop-links" id="outfitLinks"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">🏠 Room Decor</div>
+                    <div class="section-content">
+                        <ul id="decorList"></ul>
+                        <div class="shop-links" id="decorLinks"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">🎵 Playlist Vibes</div>
+                    <div class="section-content">
+                        <p id="playlistDesc"></p>
+                        <div id="playlistArtists"></div>
+                        <div class="shop-links" id="playlistLinks"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">✨ Your Emoji Pack</div>
+                    <div class="section-content" style="font-size: 1.6rem; letter-spacing: 6px; text-align: center;">
+                        <span id="emojiPack" class="emoji-pack-clickable" onclick="copyEmojis()" title="Click to copy!"></span>
+                    </div>
+                </div>
+
+                <!-- Fun new sections! -->
+                <div class="section section-fun">
+                    <div class="vibe-reading">
+                        <div class="vibe-reading-title">🔮 Your Vibe Reading</div>
+                        <p id="vibeReading"></p>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">🎵 Your Aesthetic Anthem</div>
+                    <div class="anthem-card">
+                        <div class="anthem-title">THE SONG THAT DEFINES YOUR VIBE</div>
+                        <div class="anthem-song" id="anthemSong"></div>
+                        <div class="anthem-artist" id="anthemArtist"></div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">💫 Core Activities</div>
+                    <div class="section-content">
+                        <div class="activities-grid" id="activitiesGrid"></div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">🎨 Wallpaper Color Palette</div>
+                    <div class="section-content">
+                        <p style="font-size: 0.85rem; color: #888; margin-bottom: 8px;">Click to copy hex code!</p>
+                        <div class="color-palette" id="colorPalette"></div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">♈ Zodiac Matches</div>
+                    <div class="section-content">
+                        <p style="font-size: 0.85rem; color: #888;">Signs that vibe with this aesthetic:</p>
+                        <div class="zodiac-matches" id="zodiacMatches"></div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">💕 Goes Well With</div>
+                    <div class="section-content">
+                        <p style="font-size: 0.85rem; color: #888;">Mix & match with these aesthetics:</p>
+                        <div class="compatible-aesthetics" id="compatAesthetics"></div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">🍀 Today's Lucky Items</div>
+                    <div class="section-content" style="text-align: center;">
+                        <span class="lucky-item" id="luckyItem1"></span>
+                        <span class="lucky-item" id="luckyItem2"></span>
+                        <span class="lucky-item" id="luckyItem3"></span>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">☕ Your Signature Drink</div>
+                    <div class="section-content">
+                        <div class="drink-pairing">
+                            <div class="drink-emoji" id="drinkEmoji"></div>
+                            <div class="drink-info">
+                                <div class="drink-name" id="drinkName"></div>
+                                <div class="drink-desc" id="drinkDesc"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">⭐ Celebrity Inspo</div>
+                    <div class="section-content">
+                        <p style="font-size: 0.85rem; color: #888;">People who embody this aesthetic:</p>
+                        <div class="celeb-inspo" id="celebInspo"></div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">💬 Aesthetic Pickup Line</div>
+                    <div class="section-content">
+                        <div class="pickup-line">
+                            <div class="pickup-label">Use this on someone who gets your vibe:</div>
+                            <div class="pickup-text" id="pickupLine"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">🌟 Daily Affirmation</div>
+                    <div class="section-content">
+                        <div class="affirmation-card">
+                            <div class="affirmation-text" id="affirmation"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section section-fun">
+                    <div class="section-title">⚔️ Your Aesthetic Opposite</div>
+                    <div class="section-content">
+                        <div class="aesthetic-enemy">
+                            <div class="enemy-label">THE ANTI-YOU AESTHETIC:</div>
+                            <div id="aestheticEnemy" style="font-weight: 600; margin-top: 5px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="action-btn back-btn" onclick="goBack()">← Try Another</button>
+                    <button class="action-btn share-btn" onclick="shareResults()">Share ✨</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>made with love for the aesthetic girlies & guys ♡</footer>
+    </div>
+
+    <div class="copied-toast" id="toast">Copied to clipboard! 📋✨</div>
+
+    <script>
+        let currentGender = 'female';
+        let currentAesthetic = null;
+
+        const aesthetics = {
+            // ===== COZY =====
+            cozy: {
+                title: "Cozy Era",
+                emojis: "🧸☕🕯️🧦📖",
+                color: "#a18072",
+                searchTerm: "cozy aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Oversized knit sweater + leggings",
+                    "Matching sweatsuit set (oatmeal or sage)",
+                    "Fuzzy slippers & chunky socks",
+                    "Cardigan layered over a slip dress",
+                    "Linen pajama set for soft life"
+                ],
+                outfitsMale: [
+                    "Oversized crewneck sweater + joggers",
+                    "Chunky knit cardigan",
+                    "Flannel pajama pants + henley",
+                    "Sherpa-lined hoodie",
+                    "Wool socks & moccasin slippers"
+                ],
+                outfitsNonbinary: [
+                    "Oversized knit sweater + comfy pants",
+                    "Matching sweatsuit in earth tones",
+                    "Fuzzy slippers & chunky wool socks",
+                    "Layered cardigans + soft tees",
+                    "Loose linen loungewear set"
+                ],
+                decor: [
+                    "Fairy lights literally everywhere",
+                    "Chunky knit blankets in neutral tones",
+                    "Candles (vanilla, cinnamon, or woodsy scents)",
+                    "Dried flowers in ceramic vases",
+                    "Bookshelf with aesthetic book covers"
+                ],
+                playlist: "lo-fi beats, acoustic covers, rainy day jazz",
+                artists: "Novo Amor, Sleeping At Last, Bon Iver, Norah Jones",
+                emojiPack: "🧸☕🕯️🧦📖🍂🪵🧶🌙🍵"
+            },
+
+            // ===== PREPPY =====
+            preppy: {
+                title: "Preppy",
+                emojis: "🎀🩷👛🦢💅",
+                color: "#ff9a9e",
+                searchTerm: "preppy aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Tennis skirt + polo shirt combo",
+                    "Ribbon hair bows (LOTS of them)",
+                    "Ballet flats with ankle socks",
+                    "Pleated mini skirt + cardigan",
+                    "Pearl jewelry & headbands"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Pink EVERYTHING (duh)",
+                    "Bow-shaped mirrors and decor",
+                    "Velvet accent pillows",
+                    "Vintage perfume bottles as decor",
+                    "Fresh flowers on your vanity"
+                ],
+                playlist: "girly pop, feel-good bops, getting ready anthems",
+                artists: "Sabrina Carpenter, Ariana Grande, Carly Rae Jepsen, TWICE",
+                emojiPack: "🎀🩷👛🦢💅🍓🌸💋👸🎠"
+            },
+
+            // ===== PREPPY BOY =====
+            preppyboy: {
+                title: "Preppy",
+                emojis: "⛵🎾👔🏛️📚",
+                color: "#1e3a5f",
+                searchTerm: "preppy guy aesthetic",
+                available: ['male'],
+                outfitsFemale: [],
+                outfitsMale: [
+                    "Oxford button-down + chinos",
+                    "Cable knit sweater over collared shirt",
+                    "Boat shoes or loafers (no socks)",
+                    "Navy blazer + khakis",
+                    "Polo shirts in pastel colors"
+                ],
+                decor: [
+                    "Leather-bound books on shelves",
+                    "Navy and forest green color scheme",
+                    "Vintage maps and globes",
+                    "Brass desk accessories",
+                    "Plaid throw blankets"
+                ],
+                playlist: "classic rock, yacht rock, study beats",
+                artists: "The Beatles, Fleetwood Mac, Billy Joel, Elton John",
+                emojiPack: "⛵🎾👔🏛️📚🍸🏆🎩⚓🦅"
+            },
+
+            // ===== INDIE =====
+            indie: {
+                title: "Indie Soul",
+                emojis: "🌿🍄🌻🦋📷",
+                color: "#7cb69d",
+                searchTerm: "indie aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Flowy maxi skirts + crop tops",
+                    "Crochet everything (bags, tops, hats)",
+                    "Layered gold necklaces",
+                    "Wide leg jeans + vintage band tee",
+                    "Platform sandals or worn-in docs"
+                ],
+                outfitsMale: [
+                    "Vintage band tees + corduroy pants",
+                    "Layered necklaces & rings",
+                    "Thrifted oversized shirts",
+                    "Doc Martens or Converse",
+                    "Beanie + tote bag combo"
+                ],
+                decor: [
+                    "Plants. So many plants.",
+                    "Macramé wall hangings",
+                    "Thrifted art and picture frames",
+                    "String lights and tapestries",
+                    "Vinyl record collection on display"
+                ],
+                playlist: "indie folk, dreamy alternative, chill vibey tracks",
+                artists: "Phoebe Bridgers, Clairo, The 1975, Hozier",
+                emojiPack: "🌿🍄🌻🦋📷🌈🪴🎸🌾✌️"
+            },
+
+            // ===== Y2K =====
+            y2k: {
+                title: "Y2K Icon",
+                emojis: "💿✨🦋💕📱",
+                color: "#ff00ff",
+                searchTerm: "y2k aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Low-rise everything (jeans, skirts, cargo)",
+                    "Butterfly clips & tiny sunglasses",
+                    "Bedazzled baby tees",
+                    "Platform sneakers or heels",
+                    "Mini bags that fit literally nothing"
+                ],
+                outfitsMale: [
+                    "Baggy jeans + fitted tank",
+                    "Frosted tips or highlighted hair",
+                    "Chunky skate shoes",
+                    "Chain necklaces & wristbands",
+                    "Graphic flame shirts"
+                ],
+                decor: [
+                    "Lava lamps and disco balls",
+                    "Inflatable furniture (iconic)",
+                    "Beaded curtains in doorways",
+                    "Fuzzy rugs in hot pink or baby blue",
+                    "LED strip lights (color changing)"
+                ],
+                playlist: "2000s pop, hyperpop, nostalgic bops",
+                artists: "Charli XCX, Britney Spears, Gwen Stefani, 100 gecs",
+                emojiPack: "💿✨🦋💕📱💎🛼🌈⭐🔮"
+            },
+
+            // ===== GAMER =====
+            gamer: {
+                title: "Gamer Mode",
+                emojis: "🎮💜🖤🌙👾",
+                color: "#667eea",
+                searchTerm: "gamer aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Oversized graphic tees + biker shorts",
+                    "Cat ear headphones (essential)",
+                    "Platform boots or chunky sneakers",
+                    "Mesh tops layered over tanks",
+                    "Chains and spike accessories"
+                ],
+                outfitsMale: [
+                    "Gaming brand hoodies",
+                    "Black joggers + graphic tees",
+                    "LED shoes or chunky sneakers",
+                    "Snapback or beanie",
+                    "Gaming wristbands & bracelets"
+                ],
+                decor: [
+                    "RGB everything (keyboard, mouse, lights)",
+                    "Anime posters and figurines",
+                    "Cloud LED lights or neon signs",
+                    "Gaming chair (you know the one)",
+                    "Nanoleaf panels on the wall"
+                ],
+                playlist: "lofi hip hop, video game OSTs, hyperpop, synthwave",
+                artists: "Porter Robinson, Madeon, VALORANT soundtrack, lo-fi girl",
+                emojiPack: "🎮💜🖤🌙👾🎧⚡🔥💀🎯"
+            },
+
+            // ===== DARK ACADEMIA =====
+            darkacademia: {
+                title: "Dark Academia",
+                emojis: "📚🕯️🖋️☕🍂",
+                color: "#5c4033",
+                searchTerm: "dark academia aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Tweed blazers & pleated trousers",
+                    "Turtlenecks in burgundy or forest green",
+                    "Oxford shoes or loafers",
+                    "Plaid skirts with knee-high socks",
+                    "Vintage watches & round glasses"
+                ],
+                outfitsMale: [
+                    "Tweed blazers & wool trousers",
+                    "Turtleneck sweaters",
+                    "Oxford shoes or brogues",
+                    "Knit vests over button-downs",
+                    "Vintage watches & round glasses"
+                ],
+                decor: [
+                    "Stacked antique books everywhere",
+                    "Warm lamp lighting (no overhead)",
+                    "Vintage globes and maps",
+                    "Dark wood furniture",
+                    "Dried quills and ink bottles"
+                ],
+                playlist: "classical piano, melancholic instrumentals, film scores",
+                artists: "Chopin, Ludovico Einaudi, Florence + The Machine, Hozier",
+                emojiPack: "📚🕯️🖋️☕🍂📜🎭🏛️🌙📖"
+            },
+
+            // ===== LIGHT ACADEMIA =====
+            lighacademia: {
+                title: "Light Academia",
+                emojis: "📖☀️🥐🎻🌾",
+                color: "#d4b896",
+                searchTerm: "light academia aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Linen pants + flowy blouses",
+                    "Beige and cream color palette",
+                    "Midi skirts + knit sweaters",
+                    "Mary Janes or oxford shoes",
+                    "Delicate gold jewelry"
+                ],
+                outfitsMale: [
+                    "Linen shirts + cream trousers",
+                    "Beige cardigans over white tees",
+                    "Canvas sneakers or loafers",
+                    "Soft knit vests",
+                    "Simple leather watch"
+                ],
+                decor: [
+                    "Cream and gold color scheme",
+                    "Natural light everywhere",
+                    "Fresh flowers in vases",
+                    "Light wood furniture",
+                    "Poetry books on display"
+                ],
+                playlist: "classical, French cafe, soft instrumentals",
+                artists: "Debussy, Yiruma, Ludovico Einaudi, Laufey",
+                emojiPack: "📖☀️🥐🎻🌾🕊️🌸📜✨🍵"
+            },
+
+            // ===== COTTAGECORE =====
+            cottagecore: {
+                title: "Cottagecore",
+                emojis: "🌷🧺🌻🍞🐝",
+                color: "#87a96b",
+                searchTerm: "cottagecore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Flowy linen dresses with puff sleeves",
+                    "Straw hats and wicker baskets",
+                    "Embroidered blouses + long skirts",
+                    "Aprons for baking (even just for looks)",
+                    "Floral prints in soft, muted tones"
+                ],
+                outfitsMale: [
+                    "Linen button-ups + suspenders",
+                    "Straw hats and wicker baskets",
+                    "High-waisted trousers",
+                    "Knit vests and cardigans",
+                    "Brown leather boots"
+                ],
+                decor: [
+                    "Fresh wildflowers in mason jars",
+                    "Gingham and floral patterns everywhere",
+                    "Handmade pottery and ceramics",
+                    "Vintage tea sets on display",
+                    "Pressed flowers in frames"
+                ],
+                playlist: "folk music, acoustic guitar, nature sounds",
+                artists: "Vance Joy, The Lumineers, Fleetwood Mac, Joni Mitchell",
+                emojiPack: "🌷🧺🌻🍞🐝🌾🦋🍄🌿🏡"
+            },
+
+            // ===== SOFT GIRL / SOFT BOY =====
+            softgirl: {
+                title: "Soft Girl",
+                emojis: "🧁💗☁️🍡🎀",
+                color: "#ffb6c1",
+                searchTerm: "soft girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Pastel cardigans over mini dresses",
+                    "Hair clips and scrunchies galore",
+                    "Blush pink everything",
+                    "Fluffy sweaters with pearl details",
+                    "Platform sneakers in white or pink"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Cloud-shaped lights and pillows",
+                    "Pastel color palette (pink, lavender, baby blue)",
+                    "Plushies displayed on your bed",
+                    "Vanity with cute organizers",
+                    "Polaroid photos on string lights"
+                ],
+                playlist: "dreamy pop, soft bops, cute vibes",
+                artists: "Melanie Martinez, girl in red, beabadoobee, Conan Gray",
+                emojiPack: "🧁💗☁️🍡🎀🌸🦋💕✨🍰"
+            },
+
+            softboy: {
+                title: "Soft Boy",
+                emojis: "☁️💙🎸📷🌙",
+                color: "#b8c5d6",
+                searchTerm: "soft boy aesthetic",
+                available: ['male'],
+                outfitsFemale: [],
+                outfitsMale: [
+                    "Oversized sweaters in pastels",
+                    "Cuffed jeans + canvas sneakers",
+                    "Cardigans over band tees",
+                    "Beanies and wire-frame glasses",
+                    "Layered necklaces & rings"
+                ],
+                decor: [
+                    "Fairy lights everywhere",
+                    "Polaroid photos on walls",
+                    "Plants and succulents",
+                    "Vinyl records as decor",
+                    "Soft blue and cream tones"
+                ],
+                playlist: "bedroom pop, indie acoustic, chill vibes",
+                artists: "Clairo, Rex Orange County, Boy Pablo, Conan Gray",
+                emojiPack: "☁️💙🎸📷🌙✨🌿🎧💫🦋"
+            },
+
+            // ===== GRUNGE =====
+            grunge: {
+                title: "Grunge",
+                emojis: "🖤⛓️🔥💀🎸",
+                color: "#c41e3a",
+                searchTerm: "grunge aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Oversized flannel shirts",
+                    "Ripped black jeans + band tees",
+                    "Combat boots (Doc Martens essential)",
+                    "Layered chains and chokers",
+                    "Dark lipstick & smudged eyeliner"
+                ],
+                outfitsMale: [
+                    "Oversized flannel shirts",
+                    "Ripped jeans + band tees",
+                    "Combat boots or Converse",
+                    "Layered chains and rings",
+                    "Messy hair (don't care)"
+                ],
+                decor: [
+                    "Band posters covering the walls",
+                    "String lights in warm white",
+                    "Thrifted everything",
+                    "Dark curtains and moody lighting",
+                    "Vintage record player"
+                ],
+                playlist: "90s rock, alternative, punk vibes",
+                artists: "Nirvana, Hole, The Smashing Pumpkins, Paramore",
+                emojiPack: "🖤⛓️🔥💀🎸🌙☠️💔🕷️🥀"
+            },
+
+            // ===== COASTAL =====
+            coastal: {
+                title: "Coastal",
+                emojis: "🐚🌊🦪☀️🧺",
+                color: "#1a5f7a",
+                searchTerm: "coastal grandmother aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Linen pants in cream or white",
+                    "Oversized button-up shirts",
+                    "Woven sandals or espadrilles",
+                    "Straw tote bags",
+                    "Dainty gold jewelry"
+                ],
+                outfitsMale: [
+                    "Linen shirts + chino shorts",
+                    "Boat shoes or espadrilles",
+                    "Light knit sweaters",
+                    "Woven belts",
+                    "Simple watch and bracelet"
+                ],
+                decor: [
+                    "Seashells and driftwood displays",
+                    "Light, airy curtains",
+                    "Blue and white color palette",
+                    "Wicker and rattan furniture",
+                    "Fresh eucalyptus in vases"
+                ],
+                playlist: "soft acoustic, beach vibes, easy listening",
+                artists: "Jack Johnson, Norah Jones, Colbie Caillat, Vance Joy",
+                emojiPack: "🐚🌊🦪☀️🧺🌅🏖️⚓🦞🌴"
+            },
+
+            // ===== COQUETTE =====
+            coquette: {
+                title: "Coquette",
+                emojis: "🎀🪞💋🩰🌸",
+                color: "#c71585",
+                searchTerm: "coquette aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Ribbon bows on everything",
+                    "Lace tops and satin skirts",
+                    "Mary Jane heels or ballet flats",
+                    "Delicate pearl jewelry",
+                    "Corset tops with flowy skirts"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Vanity mirror with Hollywood lights",
+                    "Pink velvet everything",
+                    "Perfume bottles as decor",
+                    "Roses (real or faux) everywhere",
+                    "Vintage-style photo frames"
+                ],
+                playlist: "romantic pop, French cafe vibes, dreamy ballads",
+                artists: "Lana Del Rey, Laufey, Taylor Swift, Mazzy Star",
+                emojiPack: "🎀🪞💋🩰🌸🍒💄👠🦢💌"
+            },
+
+            // ===== FAIRYCORE =====
+            fairycore: {
+                title: "Fairycore",
+                emojis: "🧚🍄✨🦋🌙",
+                color: "#9370db",
+                searchTerm: "fairycore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Flowy, ethereal dresses",
+                    "Flower crowns and butterfly clips",
+                    "Sheer fabrics and layered tulle",
+                    "Platform shoes with wings/flowers",
+                    "Glitter makeup & face gems"
+                ],
+                outfitsMale: [
+                    "Flowy peasant shirts",
+                    "Earth-toned layered outfits",
+                    "Leather cord necklaces with crystals",
+                    "Soft boots or sandals",
+                    "Nature-inspired jewelry"
+                ],
+                decor: [
+                    "Fairy lights (the tiny twinkly kind)",
+                    "Mushroom decor everywhere",
+                    "Crystals and gemstones",
+                    "Moss and terrariums",
+                    "Sheer, flowy curtains"
+                ],
+                playlist: "ethereal, magical, enchanted forest vibes",
+                artists: "Aurora, Enya, Cocteau Twins, Imogen Heap",
+                emojiPack: "🧚🍄✨🦋🌙💫🌸🔮🌿🪷"
+            },
+
+            // ===== EMO =====
+            emo: {
+                title: "Emo",
+                emojis: "🖤💔⚡🎸😭",
+                color: "#ff1744",
+                searchTerm: "emo aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Skinny jeans (the tighter the better)",
+                    "Band tees with side fringe hair",
+                    "Studded belts and Converse",
+                    "Striped arm warmers",
+                    "Heavy eyeliner & black nail polish"
+                ],
+                outfitsMale: [
+                    "Skinny jeans + band tees",
+                    "Side-swept hair covering one eye",
+                    "Studded belts and Vans/Converse",
+                    "Black nail polish",
+                    "Wristbands and rubber bracelets"
+                ],
+                decor: [
+                    "Band posters floor to ceiling",
+                    "String lights with polaroids",
+                    "Lava lamp or galaxy projector",
+                    "Black and red color scheme",
+                    "Lyrics written on the walls"
+                ],
+                playlist: "emo classics, pop punk, sad bops",
+                artists: "My Chemical Romance, Fall Out Boy, Paramore, Pierce The Veil",
+                emojiPack: "🖤💔⚡🎸😭🥀☠️⛓️🎤💜"
+            },
+
+            // ===== CLEAN GIRL =====
+            cleangirl: {
+                title: "Clean Girl",
+                emojis: "🧴✨🤍☁️🥒",
+                color: "#8b7355",
+                searchTerm: "clean girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Slicked back bun (the signature look)",
+                    "Gold hoop earrings",
+                    "Neutral basics: white tank, beige trousers",
+                    "Minimal makeup (just skin tint & lip oil)",
+                    "Simple gold jewelry"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Minimalist everything",
+                    "Neutral tones: beige, white, cream",
+                    "Organized skincare display",
+                    "Fresh white flowers",
+                    "Clean lines, no clutter"
+                ],
+                playlist: "chill R&B, smooth vibes, wellness music",
+                artists: "SZA, Daniel Caesar, Jorja Smith, Snoh Aalegra",
+                emojiPack: "🧴✨🤍☁️🥒🫧💅🪞🤎✔️"
+            },
+
+            // ===== OLD MONEY =====
+            oldmoney: {
+                title: "Old Money",
+                emojis: "🏛️💎🍷📿🎾",
+                color: "#d4af37",
+                searchTerm: "old money aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Cashmere sweaters draped over shoulders",
+                    "Tennis skirts and polo shirts",
+                    "Loafers and ballet flats",
+                    "Tailored blazers in navy or cream",
+                    "Minimal gold jewelry (quality over quantity)"
+                ],
+                outfitsMale: [
+                    "Cashmere sweaters over collared shirts",
+                    "Tailored trousers + leather belt",
+                    "Loafers without socks",
+                    "Navy blazer + white pants",
+                    "Quality watch (no flashy logos)"
+                ],
+                decor: [
+                    "Antique furniture pieces",
+                    "Leather-bound books",
+                    "Oil paintings and classic art",
+                    "Fresh flowers in crystal vases",
+                    "Monogrammed everything"
+                ],
+                playlist: "classical, jazz standards, sophisticated ambiance",
+                artists: "Frank Sinatra, Ella Fitzgerald, classical orchestras, Chet Baker",
+                emojiPack: "🏛️💎🍷📿🎾⛳🐎🏰💼🌹"
+            },
+
+            // ===== BALLETCORE =====
+            balletcore: {
+                title: "Balletcore",
+                emojis: "🩰🦢🎀💫🪞",
+                color: "#e8a0bf",
+                searchTerm: "balletcore aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Wrap tops and leg warmers",
+                    "Ballet flats (obviously)",
+                    "Soft pink everything",
+                    "Tulle skirts for everyday",
+                    "Ribbon details in hair and clothes"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Full length mirrors",
+                    "Soft, romantic lighting",
+                    "Pointe shoes as decor",
+                    "Pale pink and white palette",
+                    "Delicate flowers in bud vases"
+                ],
+                playlist: "classical ballet, soft instrumentals, romantic pieces",
+                artists: "Tchaikovsky, Debussy, Yiruma, Ludovico Einaudi",
+                emojiPack: "🩰🦢🎀💫🪞🌸💕🎭✨🩷"
+            },
+
+            // ===== CYBERPUNK =====
+            cyberpunk: {
+                title: "Cyberpunk",
+                emojis: "🤖💚🌃⚡🔮",
+                color: "#00ff9f",
+                searchTerm: "cyberpunk aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Techwear: cargo pants with straps",
+                    "Reflective/holographic fabrics",
+                    "Chunky platform boots",
+                    "Face masks and goggles as accessories",
+                    "Neon accents on all black"
+                ],
+                outfitsMale: [
+                    "Techwear: tactical vests + cargo pants",
+                    "Reflective/holographic jackets",
+                    "Chunky boots with straps",
+                    "Utility belts and harnesses",
+                    "Neon accents on all black"
+                ],
+                decor: [
+                    "LED strip lights in neon colors",
+                    "Cyberpunk posters and art",
+                    "Multiple monitors setup",
+                    "Neon signs (Japanese characters)",
+                    "Dark room with accent lighting"
+                ],
+                playlist: "synthwave, cyberpunk OSTs, electronic, industrial",
+                artists: "Grimes, Perturbator, Kavinsky, Cyberpunk 2077 soundtrack",
+                emojiPack: "🤖💚🌃⚡🔮🎮👾💀🖤🌌"
+            },
+
+            // ===== WITCHY =====
+            witchy: {
+                title: "Witchy",
+                emojis: "🔮🌙🕯️🖤🌿",
+                color: "#9b59b6",
+                searchTerm: "witchy aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Flowing black dresses",
+                    "Velvet everything",
+                    "Chunky silver jewelry with crystals",
+                    "Wide-brimmed hats",
+                    "Layered necklaces with moons & stars"
+                ],
+                outfitsMale: [
+                    "All black everything",
+                    "Velvet blazers and shirts",
+                    "Silver rings and pendants",
+                    "Flowy dark shirts",
+                    "Layered necklaces with symbols"
+                ],
+                decor: [
+                    "Candles everywhere (black & purple)",
+                    "Crystal collections on display",
+                    "Dried herbs hanging",
+                    "Moon phase wall art",
+                    "Vintage apothecary bottles"
+                ],
+                playlist: "dark folk, ethereal, mystical vibes",
+                artists: "Fleetwood Mac, Stevie Nicks, Aurora, Chelsea Wolfe",
+                emojiPack: "🔮🌙🕯️🖤🌿🦇☠️⚗️🌑✨"
+            },
+
+            // ===== ANGELCORE =====
+            angelcore: {
+                title: "Angelcore",
+                emojis: "👼☁️🕊️✨🤍",
+                color: "#e8d8c8",
+                searchTerm: "angelcore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "White flowy dresses",
+                    "Pearl and gold jewelry",
+                    "Sheer fabrics and lace",
+                    "Platform heels in white",
+                    "Delicate hair accessories"
+                ],
+                outfitsMale: [
+                    "White linen everything",
+                    "Gold chain necklaces",
+                    "Flowing white shirts",
+                    "Light cream trousers",
+                    "Simple gold rings"
+                ],
+                decor: [
+                    "Cherub statues and prints",
+                    "White and gold color scheme",
+                    "Clouds and feathers as decor",
+                    "Soft, diffused lighting",
+                    "Silk and satin textures"
+                ],
+                playlist: "ethereal, heavenly, choir-like sounds",
+                artists: "Enya, Cocteau Twins, Imogen Heap, FKA twigs",
+                emojiPack: "👼☁️🕊️✨🤍🌸💫🔔🪽🌙"
+            },
+
+            // ===== MERMAIDCORE =====
+            mermaidcore: {
+                title: "Mermaidcore",
+                emojis: "🧜‍♀️🐚💎🌊✨",
+                color: "#7b68ee",
+                searchTerm: "mermaidcore aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Iridescent and holographic fabrics",
+                    "Shell and pearl jewelry",
+                    "Flowy, scale-like textures",
+                    "Blue, purple, pink color palette",
+                    "Glitter and shimmer makeup"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Shell collections everywhere",
+                    "Blue and purple lighting",
+                    "Iridescent and pearlescent decor",
+                    "Aquarium or fish tank",
+                    "Ocean-themed art prints"
+                ],
+                playlist: "dreamy, oceanic, ethereal vibes",
+                artists: "Lana Del Rey, Marina, SZA, FKA twigs",
+                emojiPack: "🧜‍♀️🐚💎🌊✨🦪🔮💜🌙🐠"
+            },
+
+            // ===== BARBIECORE =====
+            barbiecore: {
+                title: "Barbiecore",
+                emojis: "💖👠💄🎀✨",
+                color: "#ff1493",
+                searchTerm: "barbiecore aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "HOT PINK everything",
+                    "Platform heels always",
+                    "Matching sets and co-ords",
+                    "Oversized sunglasses",
+                    "Statement earrings and necklaces"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Pink. Pink. More pink.",
+                    "Faux fur accents",
+                    "Neon signs",
+                    "Mirrored furniture",
+                    "Glamorous vanity setup"
+                ],
+                playlist: "pop anthems, girly bops, confidence boosters",
+                artists: "Dua Lipa, Nicki Minaj, Doja Cat, Aqua",
+                emojiPack: "💖👠💄🎀✨💅👑🌸💕🛍️"
+            },
+
+            // ===== MOB WIFE =====
+            mobwife: {
+                title: "Mob Wife",
+                emojis: "🖤🥂💅🦈🔥",
+                color: "#8b0000",
+                searchTerm: "mob wife aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Faux fur coats (the bigger the better)",
+                    "All black with gold accents",
+                    "Chunky gold jewelry",
+                    "Leopard print everything",
+                    "Red lips, dark nails"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Velvet and leather textures",
+                    "Gold and black color scheme",
+                    "Leopard print accents",
+                    "Dramatic curtains",
+                    "Vintage Italian art"
+                ],
+                playlist: "90s R&B, Italian classics, moody vibes",
+                artists: "Sade, Aaliyah, Frank Sinatra, Tony Bennett",
+                emojiPack: "🖤🥂💅🦈🔥💎👠🌹🍷🐆"
+            },
+
+            // ===== TOMATO GIRL =====
+            tomatogirl: {
+                title: "Tomato Girl",
+                emojis: "🍅☀️🌻🇮🇹💃",
+                color: "#ff6347",
+                searchTerm: "tomato girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Red and white linen pieces",
+                    "Flowy midi skirts",
+                    "Straw bags and espadrilles",
+                    "Fruit print patterns",
+                    "Minimal gold jewelry"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Terracotta pots with herbs",
+                    "Red and white gingham",
+                    "Fresh flowers in vases",
+                    "Mediterranean tile patterns",
+                    "Wicker baskets"
+                ],
+                playlist: "Italian summer, breezy, Mediterranean vibes",
+                artists: "Lana Del Rey, Harry Styles, Måneskin, Italian classics",
+                emojiPack: "🍅☀️🌻🇮🇹💃🍝🌊🏖️🍋🥖"
+            },
+
+            // ===== VANILLA GIRL =====
+            vanillagirl: {
+                title: "Vanilla Girl",
+                emojis: "🤍☁️🥛✨🧸",
+                color: "#f5deb3",
+                searchTerm: "vanilla girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Cream and white everything",
+                    "Soft knits and cashmere",
+                    "Gold delicate jewelry",
+                    "Ugg boots or ballet flats",
+                    "Hair clips and scrunchies"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "All white and cream palette",
+                    "Fuzzy textures everywhere",
+                    "Candles in vanilla scents",
+                    "Minimalist but cozy",
+                    "Soft lighting"
+                ],
+                playlist: "soft pop, acoustic, cozy vibes",
+                artists: "Gracie Abrams, Lizzy McAlpine, Taylor Swift, Laufey",
+                emojiPack: "🤍☁️🥛✨🧸🕯️🌸☕🧁💫"
+            },
+
+            // ===== COCONUT GIRL =====
+            coconutgirl: {
+                title: "Coconut Girl",
+                emojis: "🥥🌺🐚☀️🌴",
+                color: "#2e8b57",
+                searchTerm: "coconut girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Crochet tops and sarongs",
+                    "Shell and bead jewelry",
+                    "Platform sandals",
+                    "Hibiscus prints",
+                    "Beachy waves hair"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Tropical plants everywhere",
+                    "Shell and coral decor",
+                    "Rattan furniture",
+                    "Blue and green color scheme",
+                    "Surfboard as wall art"
+                ],
+                playlist: "tropical house, reggae, beach vibes",
+                artists: "Kygo, Bob Marley, Jack Johnson, Tame Impala",
+                emojiPack: "🥥🌺🐚☀️🌴🏄‍♀️🦩🍍🌊🌈"
+            },
+
+            // ===== ROYALCORE =====
+            royalcore: {
+                title: "Royalcore",
+                emojis: "👑🏰💎🕯️📜",
+                color: "#800020",
+                searchTerm: "royalcore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Velvet and brocade fabrics",
+                    "Corset tops and full skirts",
+                    "Crown and tiara accessories",
+                    "Jewel tones (burgundy, navy, gold)",
+                    "Ornate jewelry"
+                ],
+                outfitsMale: [
+                    "Velvet blazers and vests",
+                    "Ruffled shirts",
+                    "Jewel tone suits",
+                    "Ornate rings and brooches",
+                    "Capes (yes, capes)"
+                ],
+                decor: [
+                    "Velvet curtains and bedding",
+                    "Gold frames and mirrors",
+                    "Chandeliers or candelabras",
+                    "Tapestries on walls",
+                    "Antique furniture"
+                ],
+                playlist: "classical, baroque, dramatic orchestral",
+                artists: "Vivaldi, Bach, Handel, classical orchestras",
+                emojiPack: "👑🏰💎🕯️📜🦁⚔️🌹🍷🎭"
+            },
+
+            // ===== SKATER =====
+            skater: {
+                title: "Skater",
+                emojis: "🛹🔥👟🎸✨",
+                color: "#d2691e",
+                searchTerm: "skater aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Baggy jeans + crop top",
+                    "Vans or Converse",
+                    "Graphic tees and flannels",
+                    "Beanie or cap",
+                    "Layered necklaces"
+                ],
+                outfitsMale: [
+                    "Baggy jeans or dickies",
+                    "Vans or Nike SBs",
+                    "Graphic tees and hoodies",
+                    "Beanie or snapback",
+                    "Simple chain necklace"
+                ],
+                decor: [
+                    "Skateboards on wall as art",
+                    "Band and skate posters",
+                    "Thrifted furniture",
+                    "Sticker-covered surfaces",
+                    "Vintage vibes"
+                ],
+                playlist: "punk rock, indie, hip hop",
+                artists: "Blink-182, Tyler the Creator, Mac DeMarco, Turnstile",
+                emojiPack: "🛹🔥👟🎸✨🤙🎧💀🌙⚡"
+            },
+
+            // ===== E-BOY =====
+            eboy: {
+                title: "E-Boy",
+                emojis: "🖤⛓️💀🎮🌙",
+                color: "#e94560",
+                searchTerm: "eboy aesthetic",
+                available: ['male'],
+                outfitsFemale: [],
+                outfitsMale: [
+                    "Striped long sleeve under tee",
+                    "Chain necklaces and wallet chains",
+                    "Black nail polish",
+                    "Middle part curtain hair",
+                    "Rings on every finger"
+                ],
+                decor: [
+                    "LED strip lights (red/purple)",
+                    "Anime and gaming posters",
+                    "Dark walls with neon accents",
+                    "Gaming setup",
+                    "Polaroids and string lights"
+                ],
+                playlist: "hyperpop, alt rock, bedroom pop",
+                artists: "Joji, The Neighbourhood, Chase Atlantic, Yungblud",
+                emojiPack: "🖤⛓️💀🎮🌙💔🥀🔥👾✨"
+            },
+
+            // ===== SURFER =====
+            surfer: {
+                title: "Surfer",
+                emojis: "🏄‍♂️🌊☀️🤙🐚",
+                color: "#00bfff",
+                searchTerm: "surfer aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Bikini tops + denim shorts",
+                    "Oversized tees and flannels",
+                    "Flip flops always",
+                    "Shell jewelry",
+                    "Sun-bleached hair vibes"
+                ],
+                outfitsMale: [
+                    "Board shorts + tank or no shirt",
+                    "Oversized tees and hoodies",
+                    "Flip flops or Vans",
+                    "Puka shell necklace",
+                    "Sun-bleached messy hair"
+                ],
+                decor: [
+                    "Surfboards as wall art",
+                    "Beach photography",
+                    "Rattan and natural wood",
+                    "Blue and sandy neutrals",
+                    "Plants and natural light"
+                ],
+                playlist: "surf rock, reggae, chill beach vibes",
+                artists: "Jack Johnson, Sublime, Beach Boys, Bob Marley",
+                emojiPack: "🏄‍♂️🌊☀️🤙🐚🌴🦈🏖️🌅🐠"
+            },
+
+            // ===== RUGGED =====
+            rugged: {
+                title: "Rugged",
+                emojis: "🪓🏔️🌲🔥🧔",
+                color: "#5d4037",
+                searchTerm: "rugged lumberjack aesthetic",
+                available: ['male'],
+                outfitsFemale: [],
+                outfitsMale: [
+                    "Flannel shirts (always)",
+                    "Heavyweight boots",
+                    "Denim and canvas workwear",
+                    "Beards (well-groomed)",
+                    "Leather accessories"
+                ],
+                decor: [
+                    "Exposed wood and brick",
+                    "Leather furniture",
+                    "Antler or nature decor",
+                    "Warm, cabin-like vibes",
+                    "Vintage tools as art"
+                ],
+                playlist: "folk, Americana, classic rock",
+                artists: "The Lumineers, Hozier, John Mayer, Bon Iver",
+                emojiPack: "🪓🏔️🌲🔥🧔🦌🏕️🪵🌿🍂"
+            },
+
+            // ===== STREETWEAR =====
+            streetwear: {
+                title: "Streetwear",
+                emojis: "🔥👟💀🖤✨",
+                color: "#212529",
+                searchTerm: "streetwear aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Oversized hoodies + bike shorts",
+                    "Chunky sneakers (Jordans, Dunks)",
+                    "Baggy cargo pants",
+                    "Cropped tops + high waist",
+                    "Bucket hats and caps"
+                ],
+                outfitsMale: [
+                    "Oversized hoodies + joggers",
+                    "Chunky sneakers (Jordans, Yeezys)",
+                    "Baggy cargo pants",
+                    "Graphic tees",
+                    "Bucket hats and beanies"
+                ],
+                decor: [
+                    "Sneaker displays",
+                    "Street art and posters",
+                    "Neon signs",
+                    "Minimalist with bold accents",
+                    "Hypebeast collectibles"
+                ],
+                playlist: "hip hop, trap, R&B",
+                artists: "Travis Scott, Drake, Kanye West, Tyler the Creator",
+                emojiPack: "🔥👟💀🖤✨💯🏀👑⚡🎤"
+            },
+
+            // ===== TECHWEAR =====
+            techwear: {
+                title: "Techwear",
+                emojis: "🖤⚡🌧️🎒🔧",
+                color: "#1a1a1a",
+                searchTerm: "techwear aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Waterproof everything",
+                    "Utility vests with pockets",
+                    "Cargo joggers with straps",
+                    "Chunky boots",
+                    "All black with neon accents"
+                ],
+                outfitsMale: [
+                    "Waterproof shell jackets",
+                    "Tactical vests",
+                    "Cargo pants with straps",
+                    "Combat boots",
+                    "All black with function"
+                ],
+                decor: [
+                    "Minimalist and functional",
+                    "Black and grey palette",
+                    "Clean lines, no clutter",
+                    "Tech gadgets on display",
+                    "Industrial accents"
+                ],
+                playlist: "electronic, industrial, dark ambient",
+                artists: "Gesaffelstein, HEALTH, Crystal Castles, Perturbator",
+                emojiPack: "🖤⚡🌧️🎒🔧🌃🔮💀🤖🌑"
+            },
+
+            // ===== VINTAGE =====
+            vintage: {
+                title: "Vintage",
+                emojis: "📻🎞️👔🕰️🌻",
+                color: "#d2691e",
+                searchTerm: "vintage aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "High-waisted everything",
+                    "A-line skirts and dresses",
+                    "Cat-eye sunglasses",
+                    "Headscarves and bandanas",
+                    "Retro prints (polka dots, gingham)"
+                ],
+                outfitsMale: [
+                    "High-waisted pleated trousers",
+                    "Bowling shirts and camp collars",
+                    "Leather jackets",
+                    "Cuffed jeans",
+                    "Classic sneakers or loafers"
+                ],
+                decor: [
+                    "Vintage posters and ads",
+                    "Record player and vinyls",
+                    "Retro furniture",
+                    "Warm, sepia tones",
+                    "Antique finds"
+                ],
+                playlist: "oldies, classic rock, jazz standards",
+                artists: "Elvis, The Beatles, Etta James, Frank Sinatra",
+                emojiPack: "📻🎞️👔🕰️🌻🎺📷🚗🌹🎭"
+            },
+
+            // ===== MINIMALIST =====
+            minimalist: {
+                title: "Minimalist",
+                emojis: "⬜🤍✨🪴☁️",
+                color: "#f8f9fa",
+                searchTerm: "minimalist aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Neutral color palette only",
+                    "Clean lines, no logos",
+                    "Quality basics",
+                    "Simple gold or silver jewelry",
+                    "Classic silhouettes"
+                ],
+                outfitsMale: [
+                    "Neutral basics (white, black, grey)",
+                    "Clean, well-fitted pieces",
+                    "No logos or graphics",
+                    "Simple watch",
+                    "Quality over quantity"
+                ],
+                decor: [
+                    "Less is more",
+                    "White and neutral palette",
+                    "Clean surfaces",
+                    "One statement plant",
+                    "Hidden storage"
+                ],
+                playlist: "ambient, instrumental, lo-fi",
+                artists: "Brian Eno, Tycho, Khruangbin, Bonobo",
+                emojiPack: "⬜🤍✨🪴☁️🕯️📐🖤◻️🌿"
+            },
+
+            // ===== THAT GIRL =====
+            thatgirl: {
+                title: "That Girl",
+                emojis: "💪🥗☀️📓✨",
+                color: "#98fb98",
+                searchTerm: "that girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Matching workout sets",
+                    "Slicked back bun or claw clip",
+                    "Neutral athleisure",
+                    "Clean white sneakers",
+                    "Minimal jewelry"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Vision board on wall",
+                    "Organized desk setup",
+                    "Plants and natural light",
+                    "Aesthetic water bottles",
+                    "Journal collection"
+                ],
+                playlist: "motivational, workout, feel-good",
+                artists: "Dua Lipa, Doja Cat, Lizzo, Beyoncé",
+                emojiPack: "💪🥗☀️📓✨🧘‍♀️🥑💅🌸5️⃣"
+            },
+
+            // ===== DOWNTOWN GIRL =====
+            downtowngirl: {
+                title: "Downtown Girl",
+                emojis: "🖤🏙️🚕💄🌃",
+                color: "#1a1a1a",
+                searchTerm: "downtown girl aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Leather jackets always",
+                    "All black everything",
+                    "Chunky boots",
+                    "Mini skirts + tights",
+                    "Red lips, messy hair"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "City photography prints",
+                    "Black and white palette",
+                    "Exposed brick vibes",
+                    "Moody lighting",
+                    "Vintage NYC posters"
+                ],
+                playlist: "indie rock, alternative, NYC vibes",
+                artists: "The Strokes, Arctic Monkeys, Blondie, Interpol",
+                emojiPack: "🖤🏙️🚕💄🌃🎸🍸🌹🔥💋"
+            },
+
+            // ===== ARTSY =====
+            artsy: {
+                title: "Artsy",
+                emojis: "🎨🖼️✨🌈🖌️",
+                color: "#ff6b6b",
+                searchTerm: "artsy aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Paint-splattered jeans (on purpose)",
+                    "Colorful, eclectic pieces",
+                    "Oversized blazers",
+                    "Statement earrings",
+                    "Mix of patterns and textures"
+                ],
+                outfitsMale: [
+                    "Paint-splattered everything",
+                    "Colorful, eclectic pieces",
+                    "Oversized shirts",
+                    "Interesting textures",
+                    "Vintage finds"
+                ],
+                decor: [
+                    "Your own art on walls",
+                    "Eclectic, collected items",
+                    "Colorful and bold",
+                    "Art supplies as decor",
+                    "Gallery wall"
+                ],
+                playlist: "eclectic, indie, creative vibes",
+                artists: "Tame Impala, Glass Animals, Steve Lacy, Thundercat",
+                emojiPack: "🎨🖼️✨🌈🖌️🪴💜🌸🎭🌻"
+            },
+
+            // ===== GOTH =====
+            gothcore: {
+                title: "Goth",
+                emojis: "🖤🦇⚰️🌙🕸️",
+                color: "#0d0d0d",
+                searchTerm: "goth aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "All black everything",
+                    "Platform boots",
+                    "Corsets and lace",
+                    "Dramatic makeup",
+                    "Silver jewelry with symbols"
+                ],
+                outfitsMale: [
+                    "All black everything",
+                    "Platform boots or creepers",
+                    "Band tees and mesh",
+                    "Eyeliner",
+                    "Silver rings and chains"
+                ],
+                decor: [
+                    "Black walls or dark wallpaper",
+                    "Candles everywhere",
+                    "Gothic art and prints",
+                    "Velvet textures",
+                    "Skulls and Victorian vibes"
+                ],
+                playlist: "goth rock, darkwave, post-punk",
+                artists: "The Cure, Bauhaus, Siouxsie and the Banshees, Sisters of Mercy",
+                emojiPack: "🖤🦇⚰️🌙🕸️☠️🥀⛓️🔮🌑"
+            },
+
+            // ===== NORMCORE =====
+            normcore: {
+                title: "Normcore",
+                emojis: "👕👖👟🧢😐",
+                color: "#a9a9a9",
+                searchTerm: "normcore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Plain white tees",
+                    "Classic blue jeans",
+                    "White sneakers",
+                    "No logos, no statements",
+                    "Deliberately basic"
+                ],
+                outfitsMale: [
+                    "Plain tees in neutral colors",
+                    "Classic fit jeans",
+                    "White sneakers or New Balance",
+                    "No logos",
+                    "Dad vibes (intentional)"
+                ],
+                decor: [
+                    "Functional, not decorative",
+                    "Neutral everything",
+                    "Clean and simple",
+                    "No themes",
+                    "Practical items only"
+                ],
+                playlist: "whatever's on, no strong preferences",
+                artists: "The National, Bon Iver, Radiohead, LCD Soundsystem",
+                emojiPack: "👕👖👟🧢😐☕📱🚶‍♂️🛒📺"
+            },
+
+            // ===== GRANDPACORE =====
+            grandpacore: {
+                title: "Grandpacore",
+                emojis: "🧥👓📰☕🪴",
+                color: "#8b7355",
+                searchTerm: "grandpacore aesthetic",
+                available: ['male'],
+                outfitsFemale: [],
+                outfitsMale: [
+                    "Knit sweater vests",
+                    "Pleated trousers",
+                    "Cardigans and blazers",
+                    "Oxford shoes",
+                    "Flat caps or newsboy hats"
+                ],
+                decor: [
+                    "Leather armchairs",
+                    "Book collections",
+                    "Warm wood tones",
+                    "Vintage radios",
+                    "Plaid blankets"
+                ],
+                playlist: "jazz, blues, classical",
+                artists: "Miles Davis, John Coltrane, Chet Baker, Bill Evans",
+                emojiPack: "🧥👓📰☕🪴🎺📚🕰️🪑🌿"
+            },
+
+            // ===== ATHLETIC =====
+            athletic: {
+                title: "Athletic",
+                emojis: "💪🏃‍♂️🏀👟🔥",
+                color: "#e94560",
+                searchTerm: "athletic aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Matching gym sets",
+                    "High-waisted leggings",
+                    "Sports bras as tops",
+                    "Chunky sneakers",
+                    "Slicked back ponytail"
+                ],
+                outfitsMale: [
+                    "Athletic shorts + compression",
+                    "Tank tops and muscle tees",
+                    "Performance sneakers",
+                    "Caps and headbands",
+                    "Sports watches"
+                ],
+                decor: [
+                    "Home gym setup",
+                    "Motivational posters",
+                    "Sports memorabilia",
+                    "Clean and functional",
+                    "Trophy/medal display"
+                ],
+                playlist: "hype music, workout beats, EDM",
+                artists: "Drake, Travis Scott, Eminem, Kanye West",
+                emojiPack: "💪🏃‍♂️🏀👟🔥🏆🎯⚡💯🥇"
+            },
+
+            // ===== BOHO =====
+            boho: {
+                title: "Boho",
+                emojis: "🌻🪶✨🌙🧿",
+                color: "#cd853f",
+                searchTerm: "boho aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Flowy maxi dresses",
+                    "Fringe everything",
+                    "Layered jewelry",
+                    "Wide-brim hats",
+                    "Suede boots and sandals"
+                ],
+                outfitsMale: [
+                    "Loose linen shirts",
+                    "Earth tone palette",
+                    "Layered necklaces",
+                    "Leather sandals",
+                    "Relaxed, flowy fits"
+                ],
+                decor: [
+                    "Macramé wall hangings",
+                    "Floor cushions and poufs",
+                    "Layered rugs and textiles",
+                    "Plants everywhere",
+                    "Dreamcatchers and crystals"
+                ],
+                playlist: "indie folk, world music, chill vibes",
+                artists: "Fleetwood Mac, Florence + The Machine, Tame Impala, Khruangbin",
+                emojiPack: "🌻🪶✨🌙🧿🌿🦋🕯️🌈🪷"
+            },
+
+            // ===== BLOKETTE =====
+            blokette: {
+                title: "Blokette",
+                emojis: "⚽🎀💪🌸👟",
+                color: "#ff69b4",
+                searchTerm: "blokette aesthetic",
+                available: ['female'],
+                outfitsFemale: [
+                    "Football jerseys + mini skirts",
+                    "Athletic wear with bows",
+                    "Sneakers + girly accessories",
+                    "Sporty + feminine mix",
+                    "Hair ribbons with athletic fits"
+                ],
+                outfitsMale: [],
+                decor: [
+                    "Sports memorabilia + pink accents",
+                    "Mix of athletic and cute",
+                    "Team posters in cute frames",
+                    "Trophies with ribbon",
+                    "Sporty but soft"
+                ],
+                playlist: "pop anthems, hype music, girl power",
+                artists: "Charli XCX, Dua Lipa, Megan Thee Stallion, Doja Cat",
+                emojiPack: "⚽🎀💪🌸👟🏆💅✨🩷🎯"
+            },
+
+            // ===== CORPCORE =====
+            corpcore: {
+                title: "Corpcore",
+                emojis: "💼👔🖤📊☕",
+                color: "#34495e",
+                searchTerm: "corpcore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Oversized blazers",
+                    "Pleated trousers",
+                    "Loafers and mules",
+                    "Minimal jewelry",
+                    "Slicked back hair"
+                ],
+                outfitsMale: [
+                    "Well-fitted suits",
+                    "Crisp white shirts",
+                    "Leather shoes",
+                    "Quality watch",
+                    "Clean, professional"
+                ],
+                decor: [
+                    "Clean desk setup",
+                    "Minimalist office",
+                    "Black and white palette",
+                    "Organizational systems",
+                    "Sleek technology"
+                ],
+                playlist: "lo-fi, focus music, ambient",
+                artists: "Brian Eno, Tycho, Bonobo, Nils Frahm",
+                emojiPack: "💼👔🖤📊☕📈💻🗂️✨📱"
+            },
+
+            // ===== REGENCYCORE =====
+            regencycore: {
+                title: "Regencycore",
+                emojis: "🎀📜🌹🕯️💌",
+                color: "#c9b896",
+                searchTerm: "regencycore bridgerton aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Empire waist dresses",
+                    "Puff sleeves everything",
+                    "Pearl jewelry",
+                    "Ribbon details",
+                    "Soft, romantic colors"
+                ],
+                outfitsMale: [
+                    "High-waisted trousers",
+                    "Waistcoats and cravats",
+                    "Tailcoats for drama",
+                    "Riding boots",
+                    "Ruffled shirts"
+                ],
+                decor: [
+                    "Floral wallpaper",
+                    "Candelabras",
+                    "Antique furniture",
+                    "Fresh flowers",
+                    "Romantic paintings"
+                ],
+                playlist: "classical, orchestral covers of pop songs",
+                artists: "Bridgerton soundtrack, Vitamin String Quartet, classical orchestras",
+                emojiPack: "🎀📜🌹🕯️💌🏰👗🎻🦢✨"
+            },
+
+            // ===== WESTERNCORE =====
+            westerncore: {
+                title: "Westerncore",
+                emojis: "🤠👢🌵🐎🌅",
+                color: "#cd853f",
+                searchTerm: "westerncore cowboy aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Cowboy boots (essential)",
+                    "Fringe jackets",
+                    "Denim on denim",
+                    "Cowboy hats",
+                    "Turquoise jewelry"
+                ],
+                outfitsMale: [
+                    "Cowboy boots",
+                    "Western button-ups",
+                    "Denim everything",
+                    "Cowboy hats",
+                    "Leather belt with buckle"
+                ],
+                decor: [
+                    "Desert-inspired plants",
+                    "Leather and suede textures",
+                    "Southwestern patterns",
+                    "Warm earth tones",
+                    "Vintage western art"
+                ],
+                playlist: "country, americana, western",
+                artists: "Kacey Musgraves, Orville Peck, Chris Stapleton, Lainey Wilson",
+                emojiPack: "🤠👢🌵🐎🌅🦅🪨🌾⛰️🔥"
+            },
+
+            // ===== KIDCORE =====
+            kidcore: {
+                title: "Kidcore",
+                emojis: "🌈🧸🎨🍭✨",
+                color: "#ffd93d",
+                searchTerm: "kidcore aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Primary colors everywhere",
+                    "Graphic tees with cartoons",
+                    "Overalls and dungarees",
+                    "Chunky colorful sneakers",
+                    "Hair clips and scrunchies"
+                ],
+                outfitsMale: [
+                    "Bright primary colors",
+                    "Cartoon graphic tees",
+                    "Colorful sneakers",
+                    "Playful accessories",
+                    "Mix and match patterns"
+                ],
+                decor: [
+                    "Rainbow everything",
+                    "Toys and collectibles",
+                    "Bright colored furniture",
+                    "Cartoon posters",
+                    "Nostalgic 90s/2000s items"
+                ],
+                playlist: "nostalgic, happy, cartoon soundtracks",
+                artists: "MGMT, Passion Pit, Foster the People, Wallows",
+                emojiPack: "🌈🧸🎨🍭✨⭐🎠🎪🦄🎈"
+            },
+
+            // ===== SPACECORE =====
+            spacecore: {
+                title: "Spacecore",
+                emojis: "🚀🌙⭐🔮💜",
+                color: "#1a1a3e",
+                searchTerm: "spacecore galaxy aesthetic",
+                available: ['female', 'male'],
+                outfitsFemale: [
+                    "Galaxy prints",
+                    "Holographic fabrics",
+                    "Silver and iridescent",
+                    "Platform boots",
+                    "Star and moon jewelry"
+                ],
+                outfitsMale: [
+                    "Galaxy print hoodies",
+                    "Black with cosmic accents",
+                    "Holographic details",
+                    "Space-themed accessories",
+                    "Futuristic sneakers"
+                ],
+                decor: [
+                    "Galaxy projector (essential)",
+                    "Glow-in-dark stars",
+                    "Purple and blue LED lights",
+                    "Space posters and art",
+                    "Planet and moon decor"
+                ],
+                playlist: "space ambient, electronic, cosmic",
+                artists: "M83, Tycho, Daft Punk, Interstellar soundtrack",
+                emojiPack: "🚀🌙⭐🔮💜🛸👾🌌☄️✨"
+            }
+        };
+
+        // Get aesthetics available for current gender
+        function getAvailableAesthetics() {
+            return Object.entries(aesthetics).filter(([key, data]) => {
+                // Nonbinary sees all aesthetics
+                if (currentGender === 'nonbinary') return true;
+                return data.available.includes(currentGender);
+            });
+        }
+
+        // Render vibe grid
+        function renderVibeGrid() {
+            const grid = document.getElementById('vibeGrid');
+            const available = getAvailableAesthetics();
+
+            grid.innerHTML = available.map(([key, data]) => `
+                <button class="vibe-btn ${key}" onclick="showResults('${key}')">
+                    <span class="vibe-emoji">${data.emojis.slice(0, 2)}</span>
+                    ${data.title}
+                </button>
+            `).join('');
+        }
+
+        // Set gender
+        function setGender(gender) {
+            currentGender = gender;
+            document.querySelectorAll('.gender-btn').forEach(btn => {
+                btn.classList.remove('active', 'male', 'nonbinary');
+            });
+            const activeBtn = event.target;
+            activeBtn.classList.add('active');
+            if (gender === 'male') activeBtn.classList.add('male');
+            if (gender === 'nonbinary') activeBtn.classList.add('nonbinary');
+            renderVibeGrid();
+        }
+
+        function showResults(vibe) {
+            currentAesthetic = vibe;
+            const data = aesthetics[vibe];
+            let outfits;
+            if (currentGender === 'male') {
+                outfits = data.outfitsMale;
+            } else if (currentGender === 'nonbinary') {
+                // Use nonbinary outfits if defined, otherwise mix male & female
+                if (data.outfitsNonbinary && data.outfitsNonbinary.length > 0) {
+                    outfits = data.outfitsNonbinary;
+                } else {
+                    // Create a mix of both for a gender-fluid vibe
+                    const female = data.outfitsFemale || [];
+                    const male = data.outfitsMale || [];
+                    if (female.length > 0 && male.length > 0) {
+                        outfits = [
+                            female[0],
+                            male[0],
+                            female[Math.min(1, female.length - 1)],
+                            male[Math.min(1, male.length - 1)],
+                            female.length > 2 ? female[2] : male[Math.min(2, male.length - 1)]
+                        ];
+                    } else {
+                        outfits = female.length > 0 ? female : male;
+                    }
+                }
+            } else {
+                outfits = data.outfitsFemale;
+            }
+            const searchEncoded = encodeURIComponent(data.searchTerm);
+            const genderTerm = currentGender === 'male' ? 'mens' : (currentGender === 'nonbinary' ? 'unisex' : 'womens');
+            const outfitSearch = encodeURIComponent(data.searchTerm + ' ' + genderTerm + ' outfit');
+            const decorSearch = encodeURIComponent(data.searchTerm + ' room decor');
+            const playlistSearch = encodeURIComponent(data.searchTerm + ' playlist');
+
+            document.body.className = `${vibe}-theme`;
+
+            document.getElementById('resultTitle').textContent = data.title;
+            document.getElementById('resultTitle').style.color = data.color;
+            document.getElementById('resultEmojis').textContent = data.emojis;
+
+            document.getElementById('outfitList').innerHTML = outfits.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('decorList').innerHTML = data.decor.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('playlistDesc').textContent = data.playlist;
+            document.getElementById('playlistArtists').innerHTML = `<small style="color: #888;">Artists: ${data.artists}</small>`;
+            document.getElementById('emojiPack').textContent = data.emojiPack;
+
+            document.getElementById('outfitLinks').innerHTML = `
+                <a href="https://www.pinterest.com/search/pins/?q=${outfitSearch}" target="_blank" class="shop-link pinterest">Pinterest</a>
+                <a href="https://www.amazon.com/s?k=${outfitSearch}" target="_blank" class="shop-link amazon">Amazon</a>
+                <a href="https://www.etsy.com/search?q=${outfitSearch}" target="_blank" class="shop-link etsy">Etsy</a>
+                <a href="https://www.walmart.com/search?q=${outfitSearch}" target="_blank" class="shop-link walmart">Walmart</a>
+            `;
+
+            document.getElementById('decorLinks').innerHTML = `
+                <a href="https://www.pinterest.com/search/pins/?q=${decorSearch}" target="_blank" class="shop-link pinterest">Pinterest</a>
+                <a href="https://www.amazon.com/s?k=${decorSearch}" target="_blank" class="shop-link amazon">Amazon</a>
+                <a href="https://www.etsy.com/search?q=${decorSearch}" target="_blank" class="shop-link etsy">Etsy</a>
+            `;
+
+            document.getElementById('playlistLinks').innerHTML = `
+                <a href="https://open.spotify.com/search/${playlistSearch}" target="_blank" class="shop-link spotify">Spotify</a>
+                <a href="https://music.apple.com/us/search?term=${playlistSearch}" target="_blank" class="shop-link apple">Apple Music</a>
+                <a href="https://www.youtube.com/results?search_query=${playlistSearch}" target="_blank" class="shop-link youtube">YouTube</a>
+            `;
+
+            // Fun new features!
+            populateFunFeatures(vibe, data);
+
+            document.getElementById('vibeSelection').style.display = 'none';
+            document.getElementById('results').classList.add('active');
+            document.querySelector('.gender-toggle').style.display = 'none';
+            createSparkles();
+            createConfetti();
+        }
+
+        function getVibeReadings() {
+            return {
+                cozy: "The universe is wrapping you in a warm blanket of serenity. Your soul craves softness and stillness. Embrace the slow moments—they're where magic lives.",
+                preppy: "Your energy radiates confidence and charm! The stars say you're meant to stand out. Pink isn't just a color for you—it's a lifestyle.",
+                indie: "You're an old soul with a camera and a dream. The universe whispers through vinyl records and wildflowers. Trust your unique path.",
+                y2k: "Butterfly energy surrounds you! You're bringing back the sparkle the world needs. Your aura is literally glowing.",
+                gamer: "Your focus is legendary. The digital realm recognizes your power. Victory awaits those who persist—and snack wisely.",
+                darkacademia: "Knowledge is your superpower. The ancient libraries whisper your name. Poetry flows through your veins.",
+                cottagecore: "Nature is calling you home. Your hands were made to create, to nurture, to grow. Simplicity is your strength.",
+                softgirl: "You radiate pure sweetness! The world needs your gentle energy. Your softness is not weakness—it's your magic.",
+                grunge: "Your authenticity is unmatched. You see through the noise. The raw and real is where you thrive.",
+                coquette: "Romance follows wherever you go. You understand that femininity is power. Every mirror reflects your charm.",
+                fairycore: "The enchanted realm claims you as one of its own. Magic is real, and you're proof. Let your whimsy guide you.",
+                emo: "Your depth of feeling is a gift. The music understands you. Embrace the beautiful melancholy—it's art.",
+                cyberpunk: "The future runs in your code. You're ahead of your time. Neon lights guide your path to greatness.",
+                oldmoney: "Elegance is your birthright. Quiet confidence speaks louder than words. Quality over quantity, always.",
+                streetwear: "The streets respect your drip. You set trends, not follow them. Your style is your signature.",
+                witchy: "The moon knows your name. Your intuition is sharp. Trust the magic within you.",
+                default: "Your vibe is immaculate! The universe aligns in your favor. Trust your aesthetic instincts—they're always right."
+            };
+        }
+
+        function getAnthems() {
+            return {
+                cozy: { song: "Sweater Weather", artist: "The Neighbourhood" },
+                preppy: { song: "Espresso", artist: "Sabrina Carpenter" },
+                indie: { song: "Motion Sickness", artist: "Phoebe Bridgers" },
+                y2k: { song: "360", artist: "Charli XCX" },
+                gamer: { song: "Shelter", artist: "Porter Robinson" },
+                darkacademia: { song: "Achilles Come Down", artist: "Gang of Youths" },
+                cottagecore: { song: "Ribs", artist: "Lorde" },
+                softgirl: { song: "Pink + White", artist: "Frank Ocean" },
+                grunge: { song: "Smells Like Teen Spirit", artist: "Nirvana" },
+                coquette: { song: "Video Games", artist: "Lana Del Rey" },
+                fairycore: { song: "Running Up That Hill", artist: "Kate Bush" },
+                emo: { song: "Welcome to the Black Parade", artist: "My Chemical Romance" },
+                cleangirl: { song: "Good Days", artist: "SZA" },
+                oldmoney: { song: "Young and Beautiful", artist: "Lana Del Rey" },
+                cyberpunk: { song: "Nightcall", artist: "Kavinsky" },
+                streetwear: { song: "HUMBLE.", artist: "Kendrick Lamar" },
+                witchy: { song: "Rhiannon", artist: "Fleetwood Mac" },
+                balletcore: { song: "Swan Lake", artist: "Tchaikovsky" },
+                barbiecore: { song: "Barbie World", artist: "Nicki Minaj & Ice Spice" },
+                coastal: { song: "Banana Pancakes", artist: "Jack Johnson" },
+                surfer: { song: "Good Vibrations", artist: "The Beach Boys" },
+                vintage: { song: "Dreams", artist: "Fleetwood Mac" },
+                minimalist: { song: "Breathe", artist: "Télépopmusik" },
+                boho: { song: "The Chain", artist: "Fleetwood Mac" },
+                spacecore: { song: "Starman", artist: "David Bowie" },
+                default: { song: "Vogue", artist: "Madonna" }
+            };
+        }
+
+        function getActivities() {
+            return {
+                cozy: ["Reading by candlelight", "Making hot cocoa", "Journaling", "Cloud watching"],
+                preppy: ["Tennis dates", "Brunch with besties", "Shopping sprees", "Spa days"],
+                indie: ["Record store hunting", "Film photography", "Coffee shop hopping", "Thrift flipping"],
+                y2k: ["Making playlists", "Bedazzling everything", "Roller skating", "Taking selfies"],
+                gamer: ["Gaming marathons", "Anime binges", "Building PCs", "Discord calls"],
+                darkacademia: ["Poetry writing", "Museum visits", "Chess games", "Candlelit studying"],
+                cottagecore: ["Baking bread", "Flower pressing", "Picnic packing", "Garden tending"],
+                softgirl: ["Cloud spotting", "Journaling", "Making playlists", "Self-care Sundays"],
+                grunge: ["Concert going", "Vinyl collecting", "Thrift shopping", "Zine making"],
+                coquette: ["Perfume collecting", "Love letter writing", "Mirror selfies", "Cafe dates"],
+                fairycore: ["Crystal collecting", "Forest walks", "Pressing flowers", "Star gazing"],
+                emo: ["Lyric analyzing", "Concert planning", "Poetry writing", "Playlist making"],
+                cyberpunk: ["Coding projects", "Neon photography", "Tech modding", "Night walks"],
+                oldmoney: ["Golf afternoons", "Yacht watching", "Art collecting", "Wine tasting"],
+                streetwear: ["Sneaker hunting", "Pop-up shopping", "Concert going", "Skating"],
+                witchy: ["Tarot reading", "Candle making", "Moon watching", "Herb collecting"],
+                default: ["Aesthetic planning", "Pinterest boarding", "Playlist curating", "Room decorating"]
+            };
+        }
+
+        function getColorPalettes() {
+            return {
+                cozy: ["#a18072", "#d4a574", "#f5e6d3", "#8b7355", "#c4956a"],
+                preppy: ["#ff9a9e", "#ffc0cb", "#fff0f5", "#ffb6c1", "#ff69b4"],
+                indie: ["#a8e6cf", "#88d8b0", "#dcedc1", "#7cb69d", "#98d8aa"],
+                y2k: ["#ff00ff", "#00ffff", "#ff69b4", "#9370db", "#7b68ee"],
+                gamer: ["#667eea", "#764ba2", "#f093fb", "#a855f7", "#6366f1"],
+                darkacademia: ["#3d2914", "#5c4033", "#8b7355", "#a0522d", "#d4a574"],
+                cottagecore: ["#87a96b", "#c9e4ca", "#98d8aa", "#dcedc1", "#228b22"],
+                softgirl: ["#ffb6c1", "#ffc0cb", "#ffe4e1", "#fff0f5", "#ffd1dc"],
+                grunge: ["#2c2c2c", "#4a4a4a", "#c41e3a", "#8b0000", "#1a1a1a"],
+                coquette: ["#c71585", "#ff69b4", "#ffb6c1", "#fff0f5", "#db7093"],
+                fairycore: ["#9370db", "#dda0dd", "#e6e6fa", "#98fb98", "#dcd0ff"],
+                emo: ["#1a1a2e", "#ff1744", "#16213e", "#e94560", "#0f0f23"],
+                cyberpunk: ["#00ff9f", "#ff00ff", "#00ffff", "#1a0a2e", "#ff1493"],
+                oldmoney: ["#1b4332", "#2d6a4f", "#d4af37", "#f5f5dc", "#8b7355"],
+                streetwear: ["#212529", "#495057", "#f8f9fa", "#e94560", "#ffc107"],
+                witchy: ["#4a1942", "#9b59b6", "#2d1b4e", "#8b008b", "#dda0dd"],
+                default: ["#ff6b9d", "#ffd700", "#00ffff", "#ff69b4", "#9370db"]
+            };
+        }
+
+        function getZodiacMatches() {
+            return {
+                cozy: ["♋ Cancer", "♓ Pisces", "♉ Taurus"],
+                preppy: ["♌ Leo", "♎ Libra", "♊ Gemini"],
+                indie: ["♒ Aquarius", "♓ Pisces", "♐ Sagittarius"],
+                y2k: ["♊ Gemini", "♌ Leo", "♒ Aquarius"],
+                gamer: ["♒ Aquarius", "♏ Scorpio", "♍ Virgo"],
+                darkacademia: ["♏ Scorpio", "♑ Capricorn", "♍ Virgo"],
+                cottagecore: ["♉ Taurus", "♋ Cancer", "♍ Virgo"],
+                softgirl: ["♓ Pisces", "♋ Cancer", "♎ Libra"],
+                grunge: ["♏ Scorpio", "♒ Aquarius", "♈ Aries"],
+                coquette: ["♎ Libra", "♓ Pisces", "♌ Leo"],
+                fairycore: ["♓ Pisces", "♋ Cancer", "♎ Libra"],
+                emo: ["♏ Scorpio", "♓ Pisces", "♋ Cancer"],
+                cyberpunk: ["♒ Aquarius", "♏ Scorpio", "♊ Gemini"],
+                oldmoney: ["♑ Capricorn", "♌ Leo", "♎ Libra"],
+                streetwear: ["♌ Leo", "♈ Aries", "♐ Sagittarius"],
+                witchy: ["♏ Scorpio", "♓ Pisces", "♋ Cancer"],
+                default: ["♎ Libra", "♌ Leo", "♓ Pisces"]
+            };
+        }
+
+        function getCompatibleAesthetics() {
+            return {
+                cozy: ["cottagecore", "softgirl", "vanillagirl"],
+                preppy: ["coquette", "balletcore", "oldmoney"],
+                indie: ["cottagecore", "boho", "vintage"],
+                y2k: ["barbiecore", "gamer", "kidcore"],
+                gamer: ["cyberpunk", "eboy", "streetwear"],
+                darkacademia: ["lighacademia", "oldmoney", "royalcore"],
+                cottagecore: ["fairycore", "indie", "boho"],
+                softgirl: ["coquette", "balletcore", "vanillagirl"],
+                grunge: ["emo", "gothcore", "streetwear"],
+                coquette: ["balletcore", "softgirl", "regencycore"],
+                fairycore: ["cottagecore", "angelcore", "witchy"],
+                emo: ["grunge", "gothcore", "eboy"],
+                cyberpunk: ["techwear", "gamer", "streetwear"],
+                oldmoney: ["preppy", "coastal", "minimalist"],
+                streetwear: ["skater", "gamer", "athletic"],
+                witchy: ["fairycore", "gothcore", "darkacademia"],
+                coastal: ["boho", "coconutgirl", "minimalist"],
+                minimalist: ["cleangirl", "normcore", "oldmoney"]
+            };
+        }
+
+        function getLuckyItems() {
+            return {
+                cozy: ["Fuzzy socks", "Cinnamon candle", "Knit blanket", "Hot cocoa mug", "Cozy sweater"],
+                preppy: ["Hair ribbon", "Pearl earrings", "Tennis skirt", "Lip gloss", "Headband"],
+                indie: ["Film camera", "Tote bag", "Vinyl record", "Gold rings", "Band tee"],
+                y2k: ["Butterfly clip", "Lip gloss", "Mini bag", "Platform shoes", "Hoop earrings"],
+                gamer: ["LED lights", "Energy drink", "Comfy hoodie", "Headphones", "Snacks"],
+                darkacademia: ["Vintage book", "Fountain pen", "Coffee mug", "Wool scarf", "Candle"],
+                cottagecore: ["Pressed flower", "Wicker basket", "Linen dress", "Fresh bread", "Wildflowers"],
+                softgirl: ["Hair clips", "Plushie", "Lip tint", "Pastel scrunchie", "Cloud lamp"],
+                grunge: ["Band tee", "Flannel shirt", "Black jeans", "Chain necklace", "Doc Martens"],
+                coquette: ["Silk ribbon", "Rose perfume", "Pearl necklace", "Mirror", "Lace top"],
+                fairycore: ["Crystal", "Mushroom", "Flower crown", "Fairy lights", "Butterfly"],
+                emo: ["Band poster", "Eyeliner", "Wristbands", "Converse", "Lyrics notebook"],
+                cyberpunk: ["LED mask", "Neon light", "Tech gadget", "Black hoodie", "Goggles"],
+                oldmoney: ["Cashmere sweater", "Pearl studs", "Leather bag", "Silk scarf", "Watch"],
+                default: ["Cute accessory", "Cozy item", "Aesthetic find", "Special trinket", "Lucky charm"]
+            };
+        }
+
+        function copyColor(hex) {
+            navigator.clipboard.writeText(hex);
+            showCustomToast(`Copied ${hex}! 🎨`);
+        }
+
+        function copyEmojis() {
+            const emojis = document.getElementById('emojiPack').textContent;
+            navigator.clipboard.writeText(emojis);
+            showCustomToast("Emojis copied! ✨");
+        }
+
+        function showCustomToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                toast.textContent = "Copied to clipboard! 📋✨";
+            }, 2000);
+        }
+
+        function surpriseMe() {
+            const available = getAvailableAesthetics();
+            const random = available[Math.floor(Math.random() * available.length)];
+            createConfetti();
+            setTimeout(() => showResults(random[0]), 300);
+        }
+
+        function createConfetti() {
+            const colors = ['#ff6b9d', '#ffd700', '#00ffff', '#ff69b4', '#9370db', '#98fb98', '#ff6347'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        function goBack() {
+            document.body.className = '';
+            document.getElementById('vibeSelection').style.display = 'block';
+            document.getElementById('results').classList.remove('active');
+            document.querySelector('.gender-toggle').style.display = 'flex';
+            currentAesthetic = null;
+        }
+
+        function shareResults() {
+            if (!currentAesthetic) return;
+            const data = aesthetics[currentAesthetic];
+            const outfits = currentGender === 'male' ? data.outfitsMale : data.outfitsFemale;
+
+            const shareText = `${data.emojis}
+My aesthetic is: ${data.title}!
+
+✨ Outfit vibe: ${outfits[0]}
+🏠 Room must-have: ${data.decor[0]}
+🎵 Listening to: ${data.artists.split(',')[0]}
+
+My emoji pack: ${data.emojiPack}
+
+Find your aesthetic too! ✨`;
+
+            if (navigator.share) {
+                navigator.share({ title: 'My Aesthetic Result', text: shareText });
+            } else {
+                navigator.clipboard.writeText(shareText).then(() => showToast());
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function createSparkles() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    sparkle.style.background = ['#fff', '#ff6b9d', '#ffd700', '#00ffff'][Math.floor(Math.random() * 4)];
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 50);
+            }
+        }
+
+        // ===== QUIZ SYSTEM =====
+        let quizActive = false;
+        let currentQuestion = 0;
+        let quizScores = {};
+
+        const quizQuestionsFemale = [
+            {
+                question: "It's a Saturday morning. What's your vibe?",
+                options: [
+                    { text: "Reading in bed with coffee ☕", scores: { cozy: 3, cottagecore: 2, vanillagirl: 2 } },
+                    { text: "Getting ready for brunch 💅", scores: { preppy: 3, cleangirl: 2, coquette: 2 } },
+                    { text: "Thrift shopping adventure 🛍️", scores: { indie: 3, grunge: 2, vintage: 2 } },
+                    { text: "Gaming marathon in my room 🎮", scores: { gamer: 3, y2k: 2, cyberpunk: 2 } }
+                ]
+            },
+            {
+                question: "Pick your dream bedroom color palette:",
+                options: [
+                    { text: "Soft pinks and whites 🌸", scores: { softgirl: 3, coquette: 2, balletcore: 2 } },
+                    { text: "Dark browns and warm neutrals 📚", scores: { darkacademia: 3, oldmoney: 2, cozy: 2 } },
+                    { text: "Sage green and creams 🌿", scores: { cottagecore: 3, boho: 2, indie: 2 } },
+                    { text: "Black with neon accents 💜", scores: { gamer: 3, cyberpunk: 2, emo: 2 } }
+                ]
+            },
+            {
+                question: "What's your go-to accessory?",
+                options: [
+                    { text: "Ribbon bows and pearls 🎀", scores: { coquette: 3, balletcore: 2, preppy: 2 } },
+                    { text: "Chunky silver rings 💍", scores: { grunge: 3, witchy: 2, streetwear: 2 } },
+                    { text: "Delicate gold jewelry ✨", scores: { cleangirl: 3, oldmoney: 2, minimalist: 2 } },
+                    { text: "Hair clips and scrunchies 🦋", scores: { y2k: 3, softgirl: 2, kidcore: 2 } }
+                ]
+            },
+            {
+                question: "Your ideal first date location?",
+                options: [
+                    { text: "Cozy bookshop cafe 📖", scores: { darkacademia: 3, cozy: 2, indie: 2 } },
+                    { text: "Picnic in a flower field 🌷", scores: { cottagecore: 3, fairycore: 2, softgirl: 2 } },
+                    { text: "Fancy rooftop restaurant 🍷", scores: { oldmoney: 3, coquette: 2, downtowngirl: 2 } },
+                    { text: "Concert or music festival 🎸", scores: { grunge: 3, emo: 2, indie: 2 } }
+                ]
+            },
+            {
+                question: "Pick a magical creature:",
+                options: [
+                    { text: "Fairy 🧚", scores: { fairycore: 3, cottagecore: 2, angelcore: 2 } },
+                    { text: "Mermaid 🧜‍♀️", scores: { mermaidcore: 3, coastal: 2, y2k: 2 } },
+                    { text: "Witch 🔮", scores: { witchy: 3, gothcore: 2, darkacademia: 2 } },
+                    { text: "Angel 👼", scores: { angelcore: 3, balletcore: 2, softgirl: 2 } }
+                ]
+            },
+            {
+                question: "Your comfort movie genre?",
+                options: [
+                    { text: "Romantic period dramas 💌", scores: { regencycore: 3, royalcore: 2, coquette: 2 } },
+                    { text: "Animated studio ghibli films ✨", scores: { cottagecore: 3, fairycore: 2, cozy: 2 } },
+                    { text: "90s/2000s teen movies 💿", scores: { y2k: 3, preppy: 2, barbiecore: 2 } },
+                    { text: "Thriller or horror 🖤", scores: { gothcore: 3, emo: 2, grunge: 2 } }
+                ]
+            },
+            {
+                question: "Your dream vacation destination?",
+                options: [
+                    { text: "Italian countryside 🍅", scores: { tomatogirl: 3, cottagecore: 2, oldmoney: 2 } },
+                    { text: "Tropical beach paradise 🥥", scores: { coconutgirl: 3, coastal: 2, surfer: 2 } },
+                    { text: "New York City 🏙️", scores: { downtowngirl: 3, streetwear: 2, corpcore: 2 } },
+                    { text: "Cozy cabin in the woods 🌲", scores: { cozy: 3, cottagecore: 2, witchy: 2 } }
+                ]
+            },
+            {
+                question: "What's in your ideal breakfast?",
+                options: [
+                    { text: "Aesthetic acai bowl 🍓", scores: { cleangirl: 3, thatgirl: 2, minimalist: 2 } },
+                    { text: "Homemade pastries with tea 🥐", scores: { cottagecore: 3, coquette: 2, royalcore: 2 } },
+                    { text: "Just iced coffee tbh ☕", scores: { downtowngirl: 3, grunge: 2, artsy: 2 } },
+                    { text: "Full spread photoshoot 📸", scores: { oldmoney: 3, preppy: 2, barbiecore: 2 } }
+                ]
+            },
+            {
+                question: "Pick your power outfit:",
+                options: [
+                    { text: "Flowy dress with florals 🌸", scores: { cottagecore: 3, fairycore: 2, boho: 2 } },
+                    { text: "All black everything 🖤", scores: { gothcore: 3, grunge: 2, witchy: 2 } },
+                    { text: "Matching set with heels 💋", scores: { barbiecore: 3, coquette: 2, oldmoney: 2 } },
+                    { text: "Baggy jeans and crop top 🛹", scores: { streetwear: 3, skater: 2, indie: 2 } }
+                ]
+            },
+            {
+                question: "What describes your personality best?",
+                options: [
+                    { text: "Romantic dreamer 💭", scores: { coquette: 3, softgirl: 2, fairycore: 2, regencycore: 2 } },
+                    { text: "Quiet intellectual 📚", scores: { darkacademia: 3, minimalist: 2, oldmoney: 2 } },
+                    { text: "Creative free spirit 🎨", scores: { artsy: 3, boho: 2, indie: 2 } },
+                    { text: "Bold and confident 🔥", scores: { barbiecore: 3, mobwife: 2, downtowngirl: 2 } }
+                ]
+            }
+        ];
+
+        const quizQuestionsMale = [
+            {
+                question: "It's a Saturday. What are you doing?",
+                options: [
+                    { text: "Gaming with the boys 🎮", scores: { gamer: 3, eboy: 2, streetwear: 2 } },
+                    { text: "At a coffee shop reading 📖", scores: { darkacademia: 3, softboy: 2, lighacademia: 2 } },
+                    { text: "Hitting the gym 💪", scores: { athletic: 3, streetwear: 2, rugged: 2 } },
+                    { text: "Skateboarding around town 🛹", scores: { skater: 3, grunge: 2, streetwear: 2 } }
+                ]
+            },
+            {
+                question: "Pick your ideal color palette:",
+                options: [
+                    { text: "Earth tones and browns 🤎", scores: { darkacademia: 3, rugged: 2, grandpacore: 2 } },
+                    { text: "All black with accents 🖤", scores: { eboy: 3, gothcore: 2, techwear: 2 } },
+                    { text: "Navy and cream 🔵", scores: { oldmoney: 3, preppy: 2, coastal: 2 } },
+                    { text: "Neon and dark backgrounds 💜", scores: { gamer: 3, cyberpunk: 2, streetwear: 2 } }
+                ]
+            },
+            {
+                question: "Your go-to jacket style?",
+                options: [
+                    { text: "Leather jacket 🧥", scores: { grunge: 3, streetwear: 2, eboy: 2 } },
+                    { text: "Varsity or bomber jacket 🎯", scores: { preppy: 3, athletic: 2, streetwear: 2 } },
+                    { text: "Blazer or overcoat 👔", scores: { darkacademia: 3, oldmoney: 2, corpcore: 2 } },
+                    { text: "Flannel or denim 🌲", scores: { rugged: 3, indie: 2, grunge: 2 } }
+                ]
+            },
+            {
+                question: "Pick your ideal hangout:",
+                options: [
+                    { text: "Record store or vintage shop 🎵", scores: { indie: 3, vintage: 2, softboy: 2 } },
+                    { text: "Skate park 🛹", scores: { skater: 3, grunge: 2, streetwear: 2 } },
+                    { text: "Gaming lounge 🎮", scores: { gamer: 3, eboy: 2, cyberpunk: 2 } },
+                    { text: "Library or museum 🏛️", scores: { darkacademia: 3, oldmoney: 2, lighacademia: 2 } }
+                ]
+            },
+            {
+                question: "Your signature accessory?",
+                options: [
+                    { text: "Chain necklace ⛓️", scores: { eboy: 3, grunge: 2, streetwear: 2 } },
+                    { text: "Quality watch ⌚", scores: { oldmoney: 3, corpcore: 2, minimalist: 2 } },
+                    { text: "Rings on every finger 💍", scores: { grunge: 3, witchy: 2, eboy: 2 } },
+                    { text: "Cap or beanie 🧢", scores: { skater: 3, streetwear: 2, athletic: 2 } }
+                ]
+            },
+            {
+                question: "Pick your music vibe:",
+                options: [
+                    { text: "Lo-fi and indie 🎧", scores: { softboy: 3, indie: 2, cozy: 2 } },
+                    { text: "Hip-hop and rap 🔥", scores: { streetwear: 3, athletic: 2, gamer: 2 } },
+                    { text: "Rock and grunge 🎸", scores: { grunge: 3, emo: 2, skater: 2 } },
+                    { text: "Classical or jazz 🎻", scores: { darkacademia: 3, oldmoney: 2, grandpacore: 2 } }
+                ]
+            },
+            {
+                question: "Your dream car?",
+                options: [
+                    { text: "Vintage muscle car 🚗", scores: { rugged: 3, vintage: 2, grunge: 2 } },
+                    { text: "Sleek sports car 🏎️", scores: { oldmoney: 3, streetwear: 2, techwear: 2 } },
+                    { text: "Jeep or truck 🚙", scores: { rugged: 3, surfer: 2, westerncore: 2 } },
+                    { text: "Honestly I'll walk or bike 🚶", scores: { minimalist: 3, indie: 2, softboy: 2 } }
+                ]
+            },
+            {
+                question: "Pick your vibe for a night out:",
+                options: [
+                    { text: "Concert in the city 🎤", scores: { grunge: 3, emo: 2, streetwear: 2 } },
+                    { text: "Cozy night gaming 🌙", scores: { gamer: 3, cozy: 2, eboy: 2 } },
+                    { text: "Nice dinner somewhere 🍝", scores: { oldmoney: 3, darkacademia: 2, corpcore: 2 } },
+                    { text: "Beach bonfire 🔥", scores: { surfer: 3, coastal: 2, boho: 2 } }
+                ]
+            },
+            {
+                question: "Your ideal footwear?",
+                options: [
+                    { text: "Vans or Converse 👟", scores: { skater: 3, grunge: 2, indie: 2 } },
+                    { text: "Clean white sneakers ✨", scores: { streetwear: 3, minimalist: 2, cleangirl: 2 } },
+                    { text: "Doc Martens or boots 🥾", scores: { grunge: 3, gothcore: 2, eboy: 2 } },
+                    { text: "Loafers or dress shoes 👞", scores: { oldmoney: 3, darkacademia: 2, preppy: 2 } }
+                ]
+            },
+            {
+                question: "What describes you best?",
+                options: [
+                    { text: "Mysterious and artistic 🎭", scores: { eboy: 3, darkacademia: 2, artsy: 2, gothcore: 2 } },
+                    { text: "Chill and laid-back 😌", scores: { softboy: 3, surfer: 2, indie: 2, cozy: 2 } },
+                    { text: "Ambitious and driven 💼", scores: { corpcore: 3, oldmoney: 2, athletic: 2 } },
+                    { text: "Rebellious and bold ⚡", scores: { grunge: 3, skater: 2, streetwear: 2 } }
+                ]
+            }
+        ];
+
+        const quizQuestionsNonbinary = [
+            {
+                question: "It's a Saturday. What's your vibe?",
+                options: [
+                    { text: "Cozy day in with coffee ☕", scores: { cozy: 3, cottagecore: 2, softgirl: 2, softboy: 2 } },
+                    { text: "Thrifting and exploring 🛍️", scores: { indie: 3, vintage: 2, grunge: 2 } },
+                    { text: "Creating art or music 🎨", scores: { artsy: 3, fairycore: 2, indie: 2 } },
+                    { text: "Gaming or movie marathon 🎮", scores: { gamer: 3, y2k: 2, cyberpunk: 2 } }
+                ]
+            },
+            {
+                question: "Pick your ideal color palette:",
+                options: [
+                    { text: "Earthy tones and neutrals 🤎", scores: { cottagecore: 3, boho: 2, cozy: 2 } },
+                    { text: "All black with pops of color 🖤", scores: { grunge: 3, witchy: 2, gothcore: 2 } },
+                    { text: "Pastels and soft hues 🌸", scores: { fairycore: 3, softgirl: 2, angelcore: 2 } },
+                    { text: "Bold and eclectic mix 🌈", scores: { y2k: 3, kidcore: 2, artsy: 2 } }
+                ]
+            },
+            {
+                question: "Your go-to accessory?",
+                options: [
+                    { text: "Layered jewelry and rings 💍", scores: { indie: 3, witchy: 2, boho: 2 } },
+                    { text: "Chains and statement pieces ⛓️", scores: { grunge: 3, streetwear: 2, eboy: 2 } },
+                    { text: "Delicate minimal pieces ✨", scores: { minimalist: 3, cleangirl: 2, oldmoney: 2 } },
+                    { text: "Colorful and fun accessories 🦋", scores: { y2k: 3, kidcore: 2, fairycore: 2 } }
+                ]
+            },
+            {
+                question: "Your ideal hangout spot?",
+                options: [
+                    { text: "Cozy cafe or bookstore 📚", scores: { darkacademia: 3, cozy: 2, indie: 2 } },
+                    { text: "Nature walk or garden 🌿", scores: { cottagecore: 3, fairycore: 2, boho: 2 } },
+                    { text: "Art gallery or museum 🖼️", scores: { artsy: 3, oldmoney: 2, darkacademia: 2 } },
+                    { text: "Concert or music venue 🎸", scores: { grunge: 3, emo: 2, indie: 2 } }
+                ]
+            },
+            {
+                question: "Pick a magical element:",
+                options: [
+                    { text: "Stars and cosmos ✨", scores: { spacecore: 3, witchy: 2, cyberpunk: 2 } },
+                    { text: "Flowers and forests 🌸", scores: { cottagecore: 3, fairycore: 2, boho: 2 } },
+                    { text: "Crystals and moons 🔮", scores: { witchy: 3, fairycore: 2, gothcore: 2 } },
+                    { text: "Fire and energy 🔥", scores: { grunge: 3, cyberpunk: 2, streetwear: 2 } }
+                ]
+            },
+            {
+                question: "Your comfort movie genre?",
+                options: [
+                    { text: "Fantasy and magical stories ✨", scores: { fairycore: 3, cottagecore: 2, royalcore: 2 } },
+                    { text: "Indie films and documentaries 🎬", scores: { indie: 3, artsy: 2, darkacademia: 2 } },
+                    { text: "Sci-fi and futuristic 🚀", scores: { cyberpunk: 3, spacecore: 2, gamer: 2 } },
+                    { text: "Classic and nostalgic films 📽️", scores: { vintage: 3, oldmoney: 2, regencycore: 2 } }
+                ]
+            },
+            {
+                question: "Your dream getaway?",
+                options: [
+                    { text: "Cabin in the woods 🌲", scores: { cottagecore: 3, cozy: 2, witchy: 2 } },
+                    { text: "Beach and ocean vibes 🌊", scores: { coastal: 3, surfer: 2, boho: 2 } },
+                    { text: "City exploration 🏙️", scores: { streetwear: 3, artsy: 2, downtowngirl: 2 } },
+                    { text: "Somewhere mystical and ancient 🏛️", scores: { darkacademia: 3, royalcore: 2, witchy: 2 } }
+                ]
+            },
+            {
+                question: "Pick your vibe for a night out:",
+                options: [
+                    { text: "Cozy gathering with close friends 🕯️", scores: { cozy: 3, cottagecore: 2, indie: 2 } },
+                    { text: "Live music or dancing 🎵", scores: { grunge: 3, indie: 2, streetwear: 2 } },
+                    { text: "Aesthetic dinner spot 🍽️", scores: { oldmoney: 3, coquette: 2, minimalist: 2 } },
+                    { text: "Game night or movie marathon 🎮", scores: { gamer: 3, cozy: 2, y2k: 2 } }
+                ]
+            },
+            {
+                question: "Your ideal footwear?",
+                options: [
+                    { text: "Boots (combat, platform, or docs) 🥾", scores: { grunge: 3, gothcore: 2, witchy: 2 } },
+                    { text: "Comfy sneakers or Converse 👟", scores: { indie: 3, skater: 2, streetwear: 2 } },
+                    { text: "Sandals or barefoot vibes 🌿", scores: { boho: 3, cottagecore: 2, coastal: 2 } },
+                    { text: "Clean minimal shoes ✨", scores: { minimalist: 3, oldmoney: 2, cleangirl: 2 } }
+                ]
+            },
+            {
+                question: "What describes you best?",
+                options: [
+                    { text: "Creative and imaginative 🎨", scores: { artsy: 3, fairycore: 2, indie: 2, cottagecore: 2 } },
+                    { text: "Mysterious and introspective 🌙", scores: { witchy: 3, darkacademia: 2, gothcore: 2, emo: 2 } },
+                    { text: "Chill and easygoing 😌", scores: { cozy: 3, indie: 2, boho: 2, coastal: 2 } },
+                    { text: "Bold and expressive ⚡", scores: { streetwear: 3, grunge: 2, y2k: 2, artsy: 2 } }
+                ]
+            }
+        ];
+
+        function startQuiz() {
+            quizActive = true;
+            currentQuestion = 0;
+            quizScores = {};
+            document.getElementById('vibeSelection').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+            document.querySelector('.gender-toggle').style.display = 'none';
+            showQuestion();
+        }
+
+        function exitQuiz() {
+            quizActive = false;
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('vibeSelection').style.display = 'block';
+            document.querySelector('.gender-toggle').style.display = 'flex';
+        }
+
+        function showQuestion() {
+            let questions;
+            if (currentGender === 'male') {
+                questions = quizQuestionsMale;
+            } else if (currentGender === 'nonbinary') {
+                questions = quizQuestionsNonbinary;
+            } else {
+                questions = quizQuestionsFemale;
+            }
+            const q = questions[currentQuestion];
+
+            document.getElementById('quizProgress').style.width = ((currentQuestion + 1) / questions.length * 100) + '%';
+            document.getElementById('quizQuestionNum').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('quizQuestion').textContent = q.question;
+
+            document.getElementById('quizOptions').innerHTML = q.options.map((opt, i) => `
+                <button class="quiz-option" onclick="selectAnswer(${i})">${opt.text}</button>
+            `).join('');
+        }
+
+        function selectAnswer(optionIndex) {
+            let questions;
+            if (currentGender === 'male') {
+                questions = quizQuestionsMale;
+            } else if (currentGender === 'nonbinary') {
+                questions = quizQuestionsNonbinary;
+            } else {
+                questions = quizQuestionsFemale;
+            }
+            const scores = questions[currentQuestion].options[optionIndex].scores;
+
+            // Add scores
+            for (const [aesthetic, points] of Object.entries(scores)) {
+                quizScores[aesthetic] = (quizScores[aesthetic] || 0) + points;
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion >= questions.length) {
+                finishQuiz();
+            } else {
+                showQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            // Find the aesthetic with highest score
+            let topAesthetic = null;
+            let topScore = 0;
+
+            for (const [aesthetic, score] of Object.entries(quizScores)) {
+                if (score > topScore && aesthetics[aesthetic]) {
+                    topScore = score;
+                    topAesthetic = aesthetic;
+                }
+            }
+
+            // Hide quiz, show results
+            document.getElementById('quizContainer').classList.remove('active');
+            quizActive = false;
+            createConfetti();
+            setTimeout(() => showResults(topAesthetic), 300);
+        }
+
+        // ===== NEW SURPRISE FEATURES DATA =====
+        function getDrinkPairings() {
+            return {
+                cozy: { emoji: "☕", name: "Oat Milk Latte", desc: "Warm, comforting, and perfectly cozy" },
+                preppy: { emoji: "🧋", name: "Pink Drink", desc: "Sweet, refreshing, and Instagram-worthy" },
+                indie: { emoji: "🍵", name: "Matcha Latte", desc: "Unique and slightly mysterious" },
+                y2k: { emoji: "🥤", name: "Bubble Tea", desc: "Colorful, fun, and totally iconic" },
+                gamer: { emoji: "⚡", name: "Energy Drink", desc: "Fuel for those late night sessions" },
+                darkacademia: { emoji: "☕", name: "Black Coffee", desc: "Strong, intellectual, and no-nonsense" },
+                cottagecore: { emoji: "🫖", name: "Chamomile Tea", desc: "Homemade, calming, and pure comfort" },
+                softgirl: { emoji: "🍓", name: "Strawberry Milk", desc: "Sweet, cute, and delightfully pink" },
+                grunge: { emoji: "🖤", name: "Cold Brew", desc: "Dark, bold, and unapologetic" },
+                coquette: { emoji: "🍒", name: "Cherry Mocha", desc: "Romantic, sweet with a hint of drama" },
+                fairycore: { emoji: "✨", name: "Lavender Latte", desc: "Magical, ethereal, and dreamy" },
+                emo: { emoji: "💔", name: "Black Iced Coffee", desc: "Dark like your soul, refreshing like your playlists" },
+                cyberpunk: { emoji: "🌃", name: "Neon Energy Blend", desc: "Futuristic fuel for the night city" },
+                oldmoney: { emoji: "🍷", name: "Espresso Martini", desc: "Sophisticated, refined, and timeless" },
+                streetwear: { emoji: "🥤", name: "Iced Americano", desc: "Cool, clean, and effortlessly fresh" },
+                witchy: { emoji: "🌙", name: "Moon Milk", desc: "Mystical, soothing, and enchanted" },
+                balletcore: { emoji: "🩰", name: "Rose Latte", desc: "Elegant, delicate, and beautifully pink" },
+                coastal: { emoji: "🥥", name: "Coconut Iced Coffee", desc: "Beachy, tropical, and refreshing" },
+                default: { emoji: "✨", name: "Signature Blend", desc: "Perfectly matched to your vibe" }
+            };
+        }
+
+        function getCelebInspo() {
+            return {
+                cozy: ["Taylor Swift (Folklore era)", "Zendaya", "Selena Gomez"],
+                preppy: ["Reese Witherspoon", "Emma Roberts", "Blake Lively"],
+                indie: ["Florence Pugh", "Anya Taylor-Joy", "Timothée Chalamet"],
+                y2k: ["Paris Hilton", "Britney Spears", "Olivia Rodrigo"],
+                gamer: ["Pokimane", "Valkyrae", "Dream"],
+                darkacademia: ["Timothée Chalamet", "Anya Taylor-Joy", "Robert Pattinson"],
+                cottagecore: ["Florence Pugh", "Taylor Swift", "Keira Knightley"],
+                softgirl: ["Ariana Grande", "Jisoo", "Olivia Rodrigo"],
+                grunge: ["Courtney Love", "Billie Eilish", "Kristen Stewart"],
+                coquette: ["Lana Del Rey", "Lily-Rose Depp", "Sydney Sweeney"],
+                fairycore: ["Florence Welch", "Grimes", "Aurora"],
+                emo: ["Gerard Way", "Hayley Williams", "Pete Wentz"],
+                cyberpunk: ["Grimes", "Keanu Reeves", "Zendaya"],
+                oldmoney: ["Gwyneth Paltrow", "Meghan Markle", "Kate Middleton"],
+                streetwear: ["Rihanna", "A$AP Rocky", "Bella Hadid"],
+                witchy: ["Stevie Nicks", "Florence Welch", "Billie Eilish"],
+                eboy: ["Jungkook", "Yungblud", "Machine Gun Kelly"],
+                softboy: ["Harry Styles", "Timothée Chalamet", "Tom Holland"],
+                skater: ["Tony Hawk", "Tyler the Creator", "Avril Lavigne"],
+                default: ["Style icons who vibe with your aesthetic"]
+            };
+        }
+
+        function getPickupLines() {
+            return {
+                cozy: "Are you a blanket? Because I want to wrap myself in you all day. 🧸",
+                preppy: "Are you a tennis match? Because you've got me running back and forth for you. 🎀",
+                indie: "I wrote you a song, but my vinyl player is broken... wanna come over and help me fix it? 🎵",
+                y2k: "Are you a butterfly clip? Because you make my heart flutter. 🦋",
+                gamer: "Are you a save point? Because I want to come back to you every time. 🎮",
+                darkacademia: "If I were to write a thesis, it would be on why I can't stop thinking about you. 📚",
+                cottagecore: "Are you freshly baked bread? Because you've got me feeling all warm inside. 🥖",
+                softgirl: "You're like a cloud - soft, pretty, and you make my day brighter. ☁️",
+                grunge: "I don't usually feel things, but you're kind of messing that up. 🖤",
+                coquette: "Are you a love letter? Because I can't stop reading into everything you do. 💌",
+                fairycore: "Did it hurt when you fell from the fairy realm? 🧚",
+                emo: "You're the only reason I'd leave my room. 💔",
+                cyberpunk: "In a city of millions, my algorithms keep bringing me back to you. 🌃",
+                oldmoney: "I have a yacht. But I'd trade it all for a sunset with you. ⛵",
+                streetwear: "Your style is fire, but your smile is what's really dripping. 🔥",
+                witchy: "Are you a spell? Because I'm completely under your enchantment. 🔮",
+                default: "Your vibe? Immaculate. Your smile? Devastating. My chances? Hopefully good. ✨"
+            };
+        }
+
+        // Get day number for rotation (resets every 90 days / ~3 months)
+        function getDayIndex() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay);
+            return dayOfYear % 90; // Cycles every 90 days (~3 months)
+        }
+
+        function getAffirmations() {
+            // 90 affirmations per aesthetic type for 3-month rotation
+            const affirmationSets = {
+                cozy: [
+                    "You deserve rest. You deserve peace. You deserve all the cozy moments life has to offer.",
+                    "Slow down today. The world can wait while you enjoy your warm drink.",
+                    "Your comfort zone is a beautiful place. Stay as long as you need.",
+                    "Softness is not weakness. It's your superpower.",
+                    "Today is perfect for doing absolutely nothing productive.",
+                    "You are allowed to just exist peacefully today.",
+                    "Wrap yourself in comfort—you've earned it.",
+                    "The coziest moments become the best memories.",
+                    "Your need for rest is valid and important.",
+                    "Home is wherever you feel safe and warm."
+                ],
+                preppy: [
+                    "You are put-together, powerful, and perfectly polished. Own your excellence!",
+                    "You were born to stand out, not blend in. Shine bright today!",
+                    "Excellence isn't a goal—it's your standard.",
+                    "You're giving main character energy and everyone knows it.",
+                    "Today you will conquer with class and a killer outfit.",
+                    "Confidence looks amazing on you.",
+                    "You set the bar. Others just try to reach it.",
+                    "Pretty and powerful aren't mutually exclusive—you prove that daily.",
+                    "Your potential is as limitless as your wardrobe.",
+                    "Walk into every room like you own it—because energetically, you do."
+                ],
+                indie: [
+                    "Your uniqueness is your superpower. The world needs your authentic self.",
+                    "You don't follow trends—you create moments.",
+                    "Your perspective matters. Share it boldly.",
+                    "The unconventional path was made for souls like yours.",
+                    "Authenticity is rare. You have it in abundance.",
+                    "Your taste is impeccable and unapologetically yours.",
+                    "Being misunderstood is just being ahead of your time.",
+                    "You're not weird—you're limited edition.",
+                    "The best art comes from souls who dare to be different.",
+                    "Stay curious, stay creative, stay you."
+                ],
+                y2k: [
+                    "You are iconic! Main character energy only. Slay today and every day!",
+                    "You're literally that girl/guy. Period.",
+                    "Sparkle so hard they need sunglasses.",
+                    "Today's vibe: unstoppable and extremely cute.",
+                    "You were made to stand out and shine bright.",
+                    "Iconic behavior only today—anything less isn't you.",
+                    "Your energy is contagious and the world needs more of it.",
+                    "Slay today like it's 2003 and you just got your first flip phone.",
+                    "You're giving everything that needs to be gave.",
+                    "Butterfly energy activated. Prepare for transformation."
+                ],
+                gamer: [
+                    "Every new day is a new level. You've got the skills to beat any boss life throws at you.",
+                    "You've respawned. Today is a fresh run.",
+                    "Your stats are maxed out. Go show the world.",
+                    "Side quests matter too. Enjoy the journey.",
+                    "You've faced harder levels. This one's easy.",
+                    "Achievement unlocked: Being awesome.",
+                    "Your determination stat is off the charts.",
+                    "No matter how many times you fail, you always respawn stronger.",
+                    "Today's quest: Be legendary.",
+                    "You're the protagonist. Act like it."
+                ],
+                darkacademia: [
+                    "Your mind is a beautiful library. Knowledge is power, and you are powerful.",
+                    "Your thoughts have depth that most can only dream of.",
+                    "The pursuit of knowledge is never wasted.",
+                    "You carry centuries of wisdom in your soul.",
+                    "Your intellect is magnetic. Own it.",
+                    "Great minds have always been misunderstood. You're in excellent company.",
+                    "Learning is your love language.",
+                    "You think in poetry and philosophy. That's rare.",
+                    "The classics chose you. Honor them.",
+                    "Your curiosity will take you to extraordinary places."
+                ],
+                cottagecore: [
+                    "You are growing and blooming in your own time. Trust the process.",
+                    "Slow growth is still growth. Be patient with yourself.",
+                    "You were made to nurture beautiful things.",
+                    "Simplicity is the ultimate sophistication.",
+                    "Nature heals, and so will you.",
+                    "Your gentle spirit makes the world softer.",
+                    "Home is what you make it—and yours is magical.",
+                    "Today, choose peace over perfection.",
+                    "The simple joys are the most precious.",
+                    "You bloom where you're planted."
+                ],
+                softgirl: [
+                    "Your gentleness is your strength. Stay soft in a world that often isn't.",
+                    "Soft hearts are brave hearts.",
+                    "Your sweetness makes the world a better place.",
+                    "Tenderness is revolutionary. Keep being soft.",
+                    "You make people feel safe just by being you.",
+                    "Pastel vibes, powerful soul.",
+                    "Sensitivity is a gift, not a weakness.",
+                    "Your kindness ripples further than you know.",
+                    "Stay gentle—the world needs your softness.",
+                    "You're proof that sweet and strong coexist beautifully."
+                ],
+                grunge: [
+                    "You don't need to fit in. Your authenticity is what makes you unforgettable.",
+                    "Real recognizes real. And you're the realest.",
+                    "Your rawness is refreshing in a filtered world.",
+                    "Being unapologetically yourself is punk as hell.",
+                    "Perfection is boring. You're interesting.",
+                    "Your edges are what make you sharp.",
+                    "Keep being too much for the wrong people.",
+                    "Authenticity over aesthetics. Always.",
+                    "The misfits change the world.",
+                    "Your chaos is beautiful."
+                ],
+                coquette: [
+                    "You are worthy of romance, beauty, and all the pretty things in life.",
+                    "You deserve to be adored. Accept nothing less.",
+                    "Your feminine energy is powerful and captivating.",
+                    "Romance yourself first. You're worth it.",
+                    "You're the love story everyone wants to read.",
+                    "Elegance and charm flow naturally from you.",
+                    "You make everything look effortlessly beautiful.",
+                    "Your allure is timeless.",
+                    "Today, embrace your inner romantic.",
+                    "You deserve flowers just because."
+                ],
+                fairycore: [
+                    "Magic exists, and it lives within you. Spread your sparkle everywhere.",
+                    "You make the ordinary feel enchanted.",
+                    "Your whimsy is a gift to this world.",
+                    "Believe in magic today—especially the magic within you.",
+                    "You're more powerful than you realize.",
+                    "The universe conspires in your favor.",
+                    "Your imagination creates worlds.",
+                    "Stay enchanting, stay magical.",
+                    "Fairy tales are real for those who believe.",
+                    "You bring wonder wherever you go."
+                ],
+                emo: [
+                    "Your depth of feeling is a gift. Every emotion you have is valid and important.",
+                    "Feeling deeply means living fully.",
+                    "Your emotions are your art.",
+                    "It's okay to not be okay.",
+                    "Your sensitivity is your strength.",
+                    "The darkness makes the light more meaningful.",
+                    "Your feelings matter. All of them.",
+                    "Embrace the beautiful sadness—it shapes you.",
+                    "Being emotional means being alive.",
+                    "Your heart breaks and heals stronger each time."
+                ],
+                cyberpunk: [
+                    "The future is yours to hack. You're the protagonist of your own story.",
+                    "You're built different—literally and figuratively.",
+                    "The system can't contain you.",
+                    "You see possibilities others miss.",
+                    "Innovation runs in your veins.",
+                    "You're not glitching—you're evolving.",
+                    "The future needs rebels like you.",
+                    "Your vision extends beyond the horizon.",
+                    "Reality is just the starting point.",
+                    "You're writing tomorrow's code today."
+                ],
+                oldmoney: [
+                    "You carry yourself with grace. Quality over quantity, always.",
+                    "Elegance is an attitude, and you've mastered it.",
+                    "You don't chase—you attract.",
+                    "Class can't be bought, and you have it naturally.",
+                    "Timeless is better than trendy.",
+                    "Your standards are high because you know your worth.",
+                    "Quiet confidence speaks louder than words.",
+                    "You embody sophistication effortlessly.",
+                    "Legacy isn't inherited—it's created. You're creating yours.",
+                    "Excellence is simply who you are."
+                ],
+                streetwear: [
+                    "You set trends, you don't follow them. Your influence is undeniable.",
+                    "Your drip is inspiration.",
+                    "The streets recognize real—and you're it.",
+                    "Your style speaks before you do.",
+                    "You don't need approval. You are the standard.",
+                    "Confidence is your best accessory.",
+                    "You make everything look effortlessly cool.",
+                    "The culture needs voices like yours.",
+                    "Keep pushing boundaries.",
+                    "You're not following the wave—you are the wave."
+                ],
+                witchy: [
+                    "Your intuition is strong. Trust your inner magic and let it guide you.",
+                    "The moon knows your name. Trust her cycles.",
+                    "You hold more power than you know.",
+                    "Your energy shifts rooms. Use it wisely.",
+                    "Magic flows through your veins.",
+                    "Trust your gut—it's never wrong.",
+                    "You manifest your reality. Choose wisely.",
+                    "The universe whispers secrets to those who listen. You hear them.",
+                    "Your spells are working. Be patient.",
+                    "Embrace your shadow—it's part of your power."
+                ],
+                default: [
+                    "You are exactly where you need to be. Your aesthetic journey is valid and beautiful.",
+                    "Today is full of possibilities—embrace them.",
+                    "You're evolving and that's beautiful.",
+                    "Trust the process. Trust yourself.",
+                    "Your vibe attracts your tribe.",
+                    "Authenticity looks amazing on you.",
+                    "You're doing better than you think.",
+                    "Your energy is magnetic today.",
+                    "Something wonderful is coming your way.",
+                    "You are enough. You've always been enough."
+                ]
+            };
+
+            const dayIndex = getDayIndex();
+            const result = {};
+            for (const [key, affirmations] of Object.entries(affirmationSets)) {
+                result[key] = affirmations[dayIndex % affirmations.length];
+            }
+            return result;
+        }
+
+        function getAestheticEnemies(gender) {
+            // Gender-specific enemies - all are real aesthetics available for that gender
+            const femaleEnemies = {
+                cozy: { enemy: "cyberpunk", reason: "Too cold and neon for your warm soul" },
+                preppy: { enemy: "grunge", reason: "They'd mess up your perfectly coordinated outfit" },
+                indie: { enemy: "streetwear", reason: "Too mainstream for your refined taste" },
+                y2k: { enemy: "darkacademia", reason: "Not enough glitter and butterflies" },
+                gamer: { enemy: "cleangirl", reason: "Where are the RGB lights??" },
+                darkacademia: { enemy: "y2k", reason: "Too chaotic and colorful for your scholarly vibes" },
+                cottagecore: { enemy: "cyberpunk", reason: "They'd terrify your garden gnomes" },
+                softgirl: { enemy: "grunge", reason: "Too much darkness, not enough clouds" },
+                grunge: { enemy: "preppy", reason: "Too put-together and polished" },
+                coquette: { enemy: "normcore", reason: "Where's the romance? The drama? The bows??" },
+                fairycore: { enemy: "corpcore", reason: "Fluorescent office lights kill fairy magic" },
+                emo: { enemy: "cleangirl", reason: "Too... happy??" },
+                cyberpunk: { enemy: "cottagecore", reason: "Can't hack into a garden" },
+                oldmoney: { enemy: "kidcore", reason: "Too chaotic and colorful for refined taste" },
+                streetwear: { enemy: "regencycore", reason: "Historical fits don't drop at 10am" },
+                witchy: { enemy: "preppy", reason: "Too much pink, not enough moon phases" },
+                balletcore: { enemy: "grunge", reason: "Mud on the ballet slippers? Never." },
+                coastal: { enemy: "gothcore", reason: "The beach needs sunshine, not shadows" },
+                cleangirl: { enemy: "gamer", reason: "LED lights clash with the neutral palette" },
+                barbiecore: { enemy: "normcore", reason: "Beige? In THIS economy?" },
+                gothcore: { enemy: "coastal", reason: "Too much sunshine and good vibes" },
+                angelcore: { enemy: "gothcore", reason: "Heaven and hell don't mix" },
+                mermaidcore: { enemy: "coastal", reason: "Too basic for your mystical ocean vibes" },
+                royalcore: { enemy: "normcore", reason: "Where are the crowns and velvet??" },
+                boho: { enemy: "corpcore", reason: "Nature doesn't need spreadsheets" },
+                artsy: { enemy: "corpcore", reason: "Creativity can't be scheduled 9-5" },
+                minimalist: { enemy: "kidcore", reason: "Too much color and chaos" },
+                kidcore: { enemy: "minimalist", reason: "Where's the fun and rainbows??" },
+                athletic: { enemy: "regencycore", reason: "Can't do cardio in a corset" },
+                corpcore: { enemy: "fairycore", reason: "Spreadsheets don't believe in magic" },
+                regencycore: { enemy: "athletic", reason: "Sweatbands ruin the romantic vibe" },
+                westerncore: { enemy: "balletcore", reason: "Cowboy boots vs ballet slippers" },
+                spacecore: { enemy: "cottagecore", reason: "There are no gardens in zero gravity" },
+                normcore: { enemy: "barbiecore", reason: "Hot pink is... a lot" },
+                tomatogirl: { enemy: "gothcore", reason: "Italian summers need sunshine" },
+                coconutgirl: { enemy: "darkacademia", reason: "Libraries don't have palm trees" },
+                mobwife: { enemy: "softgirl", reason: "Not ruthless enough for the family business" },
+                thatgirl: { enemy: "emo", reason: "5am workouts don't match midnight playlists" },
+                downtowngirl: { enemy: "cottagecore", reason: "No bodegas in the countryside" },
+                vanillagirl: { enemy: "cyberpunk", reason: "Neon lights clash with cream aesthetics" },
+                blokette: { enemy: "corpcore", reason: "Can't wear a jersey to the office" },
+                skater: { enemy: "balletcore", reason: "Too graceful, not enough concrete" },
+                lighacademia: { enemy: "gothcore", reason: "Too dark for sun-lit study sessions" },
+                vintage: { enemy: "cyberpunk", reason: "The past and future don't mix" },
+                surfer: { enemy: "darkacademia", reason: "No waves in the library" },
+                default: { enemy: "normcore", reason: "Energy clash detected" }
+            };
+
+            const maleEnemies = {
+                cozy: { enemy: "cyberpunk", reason: "Too cold and neon for your warm soul" },
+                indie: { enemy: "streetwear", reason: "Too mainstream for your refined taste" },
+                gamer: { enemy: "oldmoney", reason: "Yacht clubs don't have WiFi for gaming" },
+                darkacademia: { enemy: "skater", reason: "Too chaotic for your scholarly vibes" },
+                grunge: { enemy: "oldmoney", reason: "Too put-together and polished" },
+                emo: { enemy: "athletic", reason: "Too many protein shakes, not enough poetry" },
+                cyberpunk: { enemy: "cottagecore", reason: "Can't hack into a garden" },
+                oldmoney: { enemy: "kidcore", reason: "Too chaotic and colorful for refined taste" },
+                streetwear: { enemy: "regencycore", reason: "Historical fits don't drop at 10am" },
+                witchy: { enemy: "athletic", reason: "Gyms don't have moon phases" },
+                coastal: { enemy: "gothcore", reason: "The beach needs sunshine, not shadows" },
+                gothcore: { enemy: "coastal", reason: "Too much sunshine and good vibes" },
+                angelcore: { enemy: "gothcore", reason: "Heaven and hell don't mix" },
+                royalcore: { enemy: "normcore", reason: "Where are the crowns and velvet??" },
+                skater: { enemy: "oldmoney", reason: "Skateboards scratch the yacht deck" },
+                eboy: { enemy: "oldmoney", reason: "Chains vs pearls—it's a vibe clash" },
+                softboy: { enemy: "rugged", reason: "Too intense, not enough pastels" },
+                rugged: { enemy: "softboy", reason: "Too soft for the wilderness" },
+                boho: { enemy: "techwear", reason: "Nature doesn't need straps and buckles" },
+                artsy: { enemy: "corpcore", reason: "Creativity can't be scheduled 9-5" },
+                minimalist: { enemy: "kidcore", reason: "Too much color and chaos" },
+                kidcore: { enemy: "minimalist", reason: "Where's the fun and rainbows??" },
+                athletic: { enemy: "regencycore", reason: "Can't do cardio in a corset" },
+                corpcore: { enemy: "skater", reason: "Skateboards in the boardroom? Never." },
+                regencycore: { enemy: "athletic", reason: "Sweatbands ruin the romantic vibe" },
+                westerncore: { enemy: "cyberpunk", reason: "The desert has no neon" },
+                spacecore: { enemy: "cottagecore", reason: "There are no gardens in zero gravity" },
+                techwear: { enemy: "boho", reason: "Too flowy for tactical efficiency" },
+                normcore: { enemy: "royalcore", reason: "Crowns are... a lot" },
+                grandpacore: { enemy: "streetwear", reason: "Too flashy for a quiet evening" },
+                lighacademia: { enemy: "gothcore", reason: "Too dark for sun-lit study sessions" },
+                vintage: { enemy: "techwear", reason: "The past and future don't mix" },
+                surfer: { enemy: "darkacademia", reason: "No waves in the library" },
+                fairycore: { enemy: "rugged", reason: "Too rough for fairy wings" },
+                cottagecore: { enemy: "cyberpunk", reason: "They'd terrify your garden gnomes" },
+                default: { enemy: "normcore", reason: "Energy clash detected" }
+            };
+
+            const nonbinaryEnemies = {
+                cozy: { enemy: "cyberpunk", reason: "Too cold and neon for your warm soul" },
+                indie: { enemy: "corpcore", reason: "Creativity can't be contained in a cubicle" },
+                y2k: { enemy: "darkacademia", reason: "Not enough glitter and butterflies" },
+                gamer: { enemy: "minimalist", reason: "Where would the RGB lights go??" },
+                darkacademia: { enemy: "kidcore", reason: "Too chaotic for your scholarly vibes" },
+                cottagecore: { enemy: "cyberpunk", reason: "They'd terrify your garden gnomes" },
+                grunge: { enemy: "oldmoney", reason: "Too put-together and polished" },
+                fairycore: { enemy: "corpcore", reason: "Fluorescent office lights kill fairy magic" },
+                emo: { enemy: "minimalist", reason: "Too clean, not enough feelings" },
+                cyberpunk: { enemy: "cottagecore", reason: "Can't hack into a garden" },
+                oldmoney: { enemy: "kidcore", reason: "Too chaotic and colorful for refined taste" },
+                streetwear: { enemy: "regencycore", reason: "Historical fits don't drop at 10am" },
+                witchy: { enemy: "minimalist", reason: "Minimalism has no room for crystals" },
+                coastal: { enemy: "gothcore", reason: "The beach needs sunshine, not shadows" },
+                gothcore: { enemy: "coastal", reason: "Too much sunshine and good vibes" },
+                angelcore: { enemy: "gothcore", reason: "Heaven and hell don't mix" },
+                royalcore: { enemy: "normcore", reason: "Where are the crowns and velvet??" },
+                boho: { enemy: "techwear", reason: "Nature doesn't need straps and buckles" },
+                artsy: { enemy: "corpcore", reason: "Creativity can't be scheduled 9-5" },
+                minimalist: { enemy: "kidcore", reason: "Too much color and chaos" },
+                kidcore: { enemy: "minimalist", reason: "Where's the fun and rainbows??" },
+                spacecore: { enemy: "cottagecore", reason: "There are no gardens in zero gravity" },
+                normcore: { enemy: "royalcore", reason: "Crowns are... a lot" },
+                vintage: { enemy: "techwear", reason: "The past and future don't mix" },
+                surfer: { enemy: "darkacademia", reason: "No waves in the library" },
+                regencycore: { enemy: "streetwear", reason: "Sneakers at the ball? Never!" },
+                westerncore: { enemy: "cyberpunk", reason: "The desert has no neon" },
+                skater: { enemy: "oldmoney", reason: "Skateboards scratch the yacht deck" },
+                athletic: { enemy: "regencycore", reason: "Can't do cardio in a corset" },
+                corpcore: { enemy: "fairycore", reason: "Spreadsheets don't believe in magic" },
+                techwear: { enemy: "boho", reason: "Too flowy for tactical efficiency" },
+                lighacademia: { enemy: "gothcore", reason: "Too dark for sun-lit study sessions" },
+                default: { enemy: "normcore", reason: "Energy clash detected" }
+            };
+
+            if (gender === 'male') return maleEnemies;
+            if (gender === 'nonbinary') return nonbinaryEnemies;
+            return femaleEnemies;
+        }
+
+        // Update populateFunFeatures to include new features
+        function populateFunFeatures(vibe, data) {
+            // Vibe Reading
+            const readings = getVibeReadings();
+            document.getElementById('vibeReading').textContent = readings[vibe] || readings.default;
+
+            // Anthem
+            const anthems = getAnthems();
+            const anthem = anthems[vibe] || anthems.default;
+            document.getElementById('anthemSong').textContent = anthem.song;
+            document.getElementById('anthemArtist').textContent = `by ${anthem.artist}`;
+
+            // Activities
+            const activities = getActivities();
+            const acts = activities[vibe] || activities.default;
+            document.getElementById('activitiesGrid').innerHTML = acts.map(a => `<div class="activity-tag">${a}</div>`).join('');
+
+            // Color Palette
+            const palettes = getColorPalettes();
+            const colors = palettes[vibe] || palettes.default;
+            document.getElementById('colorPalette').innerHTML = colors.map(c =>
+                `<div class="color-swatch" style="background: ${c}" onclick="copyColor('${c}')" title="${c}"></div>`
+            ).join('');
+
+            // Zodiac Matches
+            const zodiacs = getZodiacMatches();
+            const signs = zodiacs[vibe] || zodiacs.default;
+            document.getElementById('zodiacMatches').innerHTML = signs.map(z => `<span class="zodiac-tag">${z}</span>`).join('');
+
+            // Compatible Aesthetics
+            const compats = getCompatibleAesthetics();
+            const compatible = compats[vibe] || [];
+            document.getElementById('compatAesthetics').innerHTML = compatible.map(c =>
+                `<span class="compat-tag" onclick="showResults('${c}')">${aesthetics[c]?.title || c}</span>`
+            ).join('');
+
+            // Lucky Items - rotates daily
+            const luckyItems = getLuckyItems();
+            const items = luckyItems[vibe] || luckyItems.default;
+            const dayIndex = getDayIndex();
+            // Pick 3 items based on day, cycling through the array
+            const item1 = items[dayIndex % items.length];
+            const item2 = items[(dayIndex + 1) % items.length];
+            const item3 = items[(dayIndex + 2) % items.length];
+            document.getElementById('luckyItem1').textContent = item1;
+            document.getElementById('luckyItem2').textContent = item2;
+            document.getElementById('luckyItem3').textContent = item3;
+
+            // ===== NEW FEATURES =====
+            // Drink Pairing
+            const drinks = getDrinkPairings();
+            const drink = drinks[vibe] || drinks.default;
+            document.getElementById('drinkEmoji').textContent = drink.emoji;
+            document.getElementById('drinkName').textContent = drink.name;
+            document.getElementById('drinkDesc').textContent = drink.desc;
+
+            // Celebrity Inspo
+            const celebs = getCelebInspo();
+            const celebList = celebs[vibe] || celebs.default;
+            document.getElementById('celebInspo').innerHTML = celebList.map(c => `<span class="celeb-tag">${c}</span>`).join('');
+
+            // Pickup Line
+            const lines = getPickupLines();
+            document.getElementById('pickupLine').textContent = lines[vibe] || lines.default;
+
+            // Affirmation
+            const affirmations = getAffirmations();
+            document.getElementById('affirmation').textContent = affirmations[vibe] || affirmations.default;
+
+            // Aesthetic Enemy - now links to actual aesthetics of same gender
+            const enemies = getAestheticEnemies(currentGender);
+            const enemy = enemies[vibe] || enemies.default;
+            const enemyData = aesthetics[enemy.enemy];
+            const enemyTitle = enemyData ? enemyData.title : enemy.enemy;
+            document.getElementById('aestheticEnemy').innerHTML = `<span class="enemy-link" onclick="showResults('${enemy.enemy}')">${enemyTitle}</span> — ${enemy.reason}`;
+        }
+
+        // Initialize
+        renderVibeGrid();
+    </script>
+</body>
+</html>
